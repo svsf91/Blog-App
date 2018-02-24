@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class PageEditComponent implements OnInit {
   websiteId: string;
   pageId: string;
+  pageName: string;
   pages = [{}];
   page = {};
   constructor(private activatedRoute: ActivatedRoute,
@@ -25,5 +26,6 @@ export class PageEditComponent implements OnInit {
     );
     this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
     this.page = this.pageService.findPageById(this.pageId);
+    this.pageName = this.page['name'];
   }
 }
