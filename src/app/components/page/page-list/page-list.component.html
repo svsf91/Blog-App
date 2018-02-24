@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-left navbar-brand pull-left" routerLink="../">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <div class="navbar-header navbar-brand">
+      Page list
+    </div>
+    <a class="navbar-right navbar-brand pull-right" routerLink="./new">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+</nav>
+<div class="container-fluid myBody">
+  <div *ngFor="let pa of pages">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a [routerLink]="['./', pa._id, 'widget']">
+          {{pa.name}}
+        </a>
+        <a [routerLink]="['./', pa._id]">
+          <span class="glyphicon glyphicon-cog pull-right"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-right navbar-brand pull-right" routerLink="../">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

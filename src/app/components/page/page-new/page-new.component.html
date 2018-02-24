@@ -1,0 +1,57 @@
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="col-sm-4 hidden-xs">
+      <div class="navbar-left navbar-brand pull-left">
+        <a routerLink="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+      <div class="navbar-header navbar-brand">
+        Pages
+      </div>
+      <div class="navbar-right navbar-brand pull-right">
+        <a routerLink="./">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-8">
+      <div class="navbar-header navbar-brand">
+        New Website
+      </div>
+      <a routerLink="../" class="navbar-right navbar-brand pull-right">
+        <span class="glyphicon glyphicon-ok pull-right"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid myBody">
+  <div class="col-sm-4 hidden-xs">
+    <div *ngFor="let pa of pages">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a [routerLink]="['../', pa._id, 'page']">
+            {{pa.name}}
+          </a>
+          <a [routerLink]="['../', pa._id]">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <label>Name</label>
+    <input class="form-control" type="text" placeholder="Name">
+    <label>Description</label>
+    <textarea class="form-control" type="text" placeholder="Description"></textarea>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-right navbar-brand pull-right" routerLink="../../">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

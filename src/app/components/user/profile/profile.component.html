@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-left navbar-brand pull-left" routerLink="/login">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <div class="navbar-header navbar-brand">
+      Website list
+    </div>
+    <a class="navbar-right navbar-brand pull-right" routerLink="./">
+      <span class="glyphicon glyphicon-ok"></span>
+    </a>
+  </div>
+</nav>
+<div class="container-fluid myBody">
+  <label>Username</label>
+  <input [(ngModel)]="username" class="form-control" type="text"
+         id="username" placeholder="{{username}}">
+  <label>Email</label>
+  <input class="form-control" type="text" id="email" placeholder="hugh@gmail.com">
+  <label>Fisrt Name</label>
+  <input class="form-control" type="text" id="first-name" placeholder="hugh">
+  <label>Last Name</label>
+  <input class="form-control" type="text" id="last-name" placeholder="deng">
+  <a routerLink="./website" class="btn btn-primary btn-block">Website</a>
+  <button routerLink="/login" class="btn btn-danger btn-block">Logout</button>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-right navbar-brand pull-right" routerLink="./">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>
+

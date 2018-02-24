@@ -1,0 +1,66 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-left navbar-brand pull-left" [routerLink]="['/user/123/website/123/page']">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <div class="navbar-header navbar-brand">
+      Widgets
+    </div>
+    <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user/123/website/123/page/123/widget/new']">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+</nav>
+
+<div class="container-fluid myBody">
+  <div class="myWidget">
+    <div class="myToolbar">
+      <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
+    <h1>Widget Heading</h1>
+  </div>
+
+  <div class="myWidget">
+    <div class="myToolbar">
+      <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
+    <img class="myContent" src="http://lorempixel.com/400/200"/>
+  </div>
+
+  <div class="myWidget">
+    <div class="myToolbar">
+      <span class="glyphicon glyphicon-cog"></span>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
+    <p>Regardless of the fate of the last rocket section, the launch demonstrates the Falcon Heavy can successfully
+      deliver a payload instead of breaking up due to which is what matters to paying customers. According to SpaceX already has two commercial launches using the rocket scheduled for 2018, the Arabsat 6A communications
+      satellite and a U.S. Air Force mission which will also carry a solar-sail experiment. As TechCrunch
+      noted, the end goal is for Musk’s company to be able to “turn rockets around in less than 24 hours and
+      have reflown boosters go up twice in one day.”</p>
+  </div>
+
+  <div class="myWidget">
+    <div class="myToolbar">
+      <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
+        <span class="glyphicon glyphicon-cog"></span>
+      </a>
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Tk338VXcb24" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user/123']">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

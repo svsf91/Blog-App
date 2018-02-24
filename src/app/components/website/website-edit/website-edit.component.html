@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container-fluid">
+    <div class="col-sm-4 hidden-xs">
+      <a class="navbar-left navbar-brand pull-left" routerLink="../">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <div class="navbar-header navbar-brand">
+        Websites
+      </div>
+      <a class="navbar-right navbar-brand pull-right" routerLink="../new">
+        <span class="glyphicon glyphicon-plus pull-right"></span>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <div class="navbar-header navbar-brand">
+        Edit Website
+      </div>
+      <a class="navbar-right navbar-brand pull-right" routerLink="../">
+        <span class="glyphicon glyphicon-ok pull-right"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid myBody">
+  <div class="col-sm-4 hidden-xs">
+
+    <div *ngFor="let web of websites">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a [routerLink]="['../', web._id, 'page']">
+            {{web.name}}
+          </a>
+          <a [routerLink]="['../', web._id]">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <form>
+      <label>Name</label>
+      <input class="form-control" type="text" placeholder="{{website.name}}">
+      <label>Description</label>
+      <textarea class="form-control" type="text" placeholder="Description"></textarea>
+      <button routerLink="../" class="btn btn-danger btn-block">Delete</button>
+    </form>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-right navbar-brand pull-right" routerLink="../">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

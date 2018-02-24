@@ -1,0 +1,55 @@
+@import "../assets/vendors/bootstrap/dist/css/bootstrap.min.css";
+input {
+  margin-bottom: 5px;
+}
+
+.hugh-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: grey;
+  padding: 7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5
+}
+
+.hugh-widget .hugh-content {
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+}
+
+.panel-heading, .panel-footer {
+  background-color: #337ab7;
+  color: white;
+  position: fixed;
+  width: 100%;
+}
+
+.panel-heading {
+  top: 0px;
+}
+
+.panel-footer {
+  bottom: 0px;
+}
+
+.panel-body {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.panel-heading .glyphicon, .panel-footer .glyphicon {
+  color: white;
+}
+
+.hugh-heading, .hugh-footer {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.hugh-heading .glyphicon, .hugh-footer .glyphicon {
+  color: black;
+}

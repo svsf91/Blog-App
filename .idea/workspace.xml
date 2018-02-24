@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5e5fa8f5-621e-4cc2-9745-5485505d598b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-edit/page-edit.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-edit/page-edit.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-edit/page-edit.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-edit/page-edit.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-list/page-list.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-list/page-list.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-list/page-list.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-list/page-list.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/login/login.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/login/login.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/login/login.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/login/login.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/profile/profile.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/profile/profile.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/profile/profile.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/profile/profile.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/register/register.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/register/register.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/register/register.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/user/register/register.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-edit/website-edit.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-edit/website-edit.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-edit/website-edit.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-edit/website-edit.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-list/website-list.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-list/website-list.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-list/website-list.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-list/website-list.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-new/website-new.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-new/website-new.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-new/website-new.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/website/website-new/website-new.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-chooser/widget-chooser.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-chooser/widget-chooser.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-chooser/widget-chooser.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-chooser/widget-chooser.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-edit.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-edit.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-edit.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-edit.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-header/widget-header.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-header/widget-header.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-header/widget-header.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-header/widget-header.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-image/widget-image.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-image/widget-image.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-image/widget-image.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-image/widget-image.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-youtube/widget-youtube.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-youtube/widget-youtube.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-youtube/widget-youtube.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-edit/widget-youtube/widget-youtube.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-list/widget-list.component.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-list/widget-list.component.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-list/widget-list.component.spec.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/components/widget/widget-list/widget-list.component.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/services/page.service.client.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/services/user.service.client.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/services/website.service.client.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/app/services/widget.service.client.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap-theme.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap-theme.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap-theme.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap-theme.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/css/bootstrap.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/js/bootstrap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/js/bootstrap.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/js/npm.js" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" afterPath="$PROJECT_DIR$/src/app/app.component.css" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" afterPath="$PROJECT_DIR$/src/app/app.component.html" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" afterPath="$PROJECT_DIR$/src/app/app.module.ts" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/dist/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="page-new.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.routing.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.routing.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.spec.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.component.spec.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="npm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/js/npm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="54" />
+    <option name="y" value="23" />
+    <option name="width" value="1626" />
+    <option name="height" value="1027" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="defaultAngularRepoWithHeroku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="defaultAngularRepoWithHeroku" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="environments" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/app" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e5fa8f5-621e-4cc2-9745-5485505d598b" name="Default" comment="" />
+      <created>1519514323872</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1519514323872</updated>
+      <workItem from="1519514325434" duration="273000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="273000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="54" y="23" width="1626" height="1027" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24984424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/app/components/page/page-new/page-new.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.routing.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/vendors/bootstrap/dist/js/npm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
