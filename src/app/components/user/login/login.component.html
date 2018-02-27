@@ -5,27 +5,27 @@
   <h1>Login</h1>
   <form (ngSubmit)="login()" #f="ngForm">
 
-    <input placeholder="username"
+    <input placeholder="alice"
            name="username"
            type="text"
            class="form-control"
-           ngModel required #username="ngModel"/>
+           [(ngModel)]="username" required #name="ngModel"/>
     <span class="help-block"
-          *ngIf="!username.valid && username.touched">
-      Please enter username!
+          *ngIf="name.invalid && name.touched">
+      Default Username is : alice
     </span>
-    <input placeholder="password"
+    <input placeholder="alice"
            name="password"
            type="password"
            class="form-control"
-           ngModel required #password="ngModel"/>
+           [(ngModel)]="password" required #pass="ngModel"/>
     <span class="help-block"
-          *ngIf="!password.valid && password.touched">
-      Please enter password!
+          *ngIf="pass.invalid && pass.touched">
+      Default Password is : alice
     </span>
     <button type="submit"
       class="btn btn-primary btn-block"
-      [disabled]="!f.valid">
+      [disabled]="f.invalid">
       Login
     </button>
     <button routerLink="/register"

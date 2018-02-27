@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../class/Website';
+
 
 @Component({
   selector: 'app-website-list',
@@ -9,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class WebsiteListComponent implements OnInit {
   userId: string;
-  websites = [{}];
+  websites: Website[];
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router) { }

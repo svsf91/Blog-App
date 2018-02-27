@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebsiteService} from '../../../services/website.service.client';
+import {Website} from '../../class/Website';
 
 @Component({
   selector: 'app-website-new',
@@ -10,8 +11,8 @@ import {WebsiteService} from '../../../services/website.service.client';
 export class WebsiteNewComponent implements OnInit {
   websiteId: string;
   userId: string;
-  website = {};
-  websites = [{}];
+  website: Website;
+  websites: Website[];
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {}

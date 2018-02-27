@@ -15,10 +15,10 @@
   <div *ngFor="let web of websites">
     <ul class="list-group">
       <li class="list-group-item">
-        <a [routerLink]="['./', web['_id'], 'page']">
-          {{web['name']}}
+        <a [routerLink]="['./', web._id, 'page']">
+          {{web.name}}
         </a>
-        <a [routerLink]="['./', web['_id']]">
+        <a [routerLink]="['./', web._id]">
           <span class="glyphicon glyphicon-cog pull-right"></span>
         </a>
       </li>

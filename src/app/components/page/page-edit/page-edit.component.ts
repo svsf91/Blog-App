@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Page} from '../../class/Page';
 
 @Component({
   selector: 'app-page-edit',
@@ -11,8 +12,8 @@ export class PageEditComponent implements OnInit {
   websiteId: string;
   pageId: string;
   pageName: string;
-  pages = [{}];
-  page = {};
+  pages: Page[];
+  page: Page;
   constructor(private activatedRoute: ActivatedRoute,
               private pageService: PageService,
               private router: Router) { }
@@ -26,6 +27,6 @@ export class PageEditComponent implements OnInit {
     );
     this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
     this.page = this.pageService.findPageById(this.pageId);
-    this.pageName = this.page['name'];
+    this.pageName = this.page.name;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../class/Website';
 
 @Component({
   selector: 'app-website-edit',
@@ -11,8 +12,8 @@ export class WebsiteEditComponent implements OnInit {
   websiteId: string;
   websiteName: string;
   userId: string;
-  website = {};
-  websites = [{}];
+  website: Website;
+  websites: Website[];
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
               private router: Router) { }
@@ -25,6 +26,7 @@ export class WebsiteEditComponent implements OnInit {
     );
     this.websites = this.websiteService.findWebsiteByUser(this.userId);
     this.website = this.websiteService.findWebsiteById(this.websiteId);
-    this.websiteName = this.website['name'];
+    this.websiteName = this.website.name;
   }
+
 }

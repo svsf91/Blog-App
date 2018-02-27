@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {Page} from '../components/class/Page';
 
 // injecting service into module
 @Injectable()
@@ -11,7 +12,7 @@ export class PageService {
   constructor() {
   }
 
-  pages = [
+  pages: Page[] = [
     { '_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'Lorem' },
     { '_id': '432', 'name': 'Post 2', 'websiteId': '456', 'description': 'Lorem' },
     { '_id': '543', 'name': 'Post 3', 'websiteId': '456', 'description': 'Lorem' },
@@ -52,7 +53,7 @@ export class PageService {
     }
   }
 
-  updagePage(pageId: string, page: any) {
+  updagePage(pageId: string, page: Page) {
     for (let x = 0; x < this.pages.length; x++) {
       if (this.pages[x]._id === pageId) {
         this.pages[x] = page;

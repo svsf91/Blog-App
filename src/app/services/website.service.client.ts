@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
+import {Website} from '../components/class/Website';
 
 export class WebsiteService {
   constructor() {
   }
-  websites = [
+  websites: Website[] = [
     { '_id': '123', 'name': 'Facebook',    'developerId': '456', 'description': 'Lorem' },
     { '_id': '234', 'name': 'Tweeter',     'developerId': '456', 'description': 'Lorem' },
     { '_id': '456', 'name': 'Gizmodo',     'developerId': '456', 'description': 'Lorem' },
@@ -23,9 +24,9 @@ export class WebsiteService {
     'deleteWebsite': this.deleteWebsite
   };
 
-  createWebsite(userId: string, website: any) {
+  createWebsite(userId: string, website: Website) {
     website.developerId = userId;
-    website._id = Math.random();
+    website._id = Math.random().toString();
     this.websites.push(website);
     return website;
   }
@@ -41,7 +42,7 @@ export class WebsiteService {
     return this.websites.filter(x => x.developerId === userId);
   }
 
-  updateWebsite(websiteId: string, website: any) {
+  updateWebsite(websiteId: string, website: Website) {
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x]._id === websiteId) {
         this.websites[x] = website;
