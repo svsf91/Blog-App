@@ -16,7 +16,6 @@ import { PageListComponent } from './components/page/page-list/page-list.compone
 import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
-import {HttpModule} from '@angular/http';
 import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
@@ -24,6 +23,9 @@ import {WidgetService} from './services/widget.service.client';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+import {ServerComponent} from './services/server/server.component';
+import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,12 +44,14 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    ServerComponent
   ],
   imports: [
     BrowserModule,
     Routing,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
