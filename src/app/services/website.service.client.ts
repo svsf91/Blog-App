@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
-import {Website} from '../components/class/Website';
+import {Website} from '../models/Website';
 
 export class WebsiteService {
   constructor() {

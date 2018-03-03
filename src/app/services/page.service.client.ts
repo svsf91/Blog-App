@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
-import {Page} from '../components/class/Page';
+import {Page} from '../models/Page';
 
 // injecting service into module
 @Injectable()

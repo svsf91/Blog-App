@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Website} from '../../class/Website';
+import {Website} from '../../../models/Website';
 
 @Component({
   selector: 'app-website-edit',
@@ -10,7 +10,6 @@ import {Website} from '../../class/Website';
 })
 export class WebsiteEditComponent implements OnInit {
   websiteId: string;
-  websiteName: string;
   userId: string;
   website: Website;
   websites: Website[];
@@ -26,7 +25,10 @@ export class WebsiteEditComponent implements OnInit {
     );
     this.websites = this.websiteService.findWebsiteByUser(this.userId);
     this.website = this.websiteService.findWebsiteById(this.websiteId);
-    this.websiteName = this.website.name;
   }
-
+  jumpToEdit(websiteId) {
+    this.websiteId = websiteId;
+    this.website = this.websiteService.findWebsiteById(this.websiteId);
+    this.router.navigate(['/user', this.userId, 'website', this.websiteId]);
+  }
 }

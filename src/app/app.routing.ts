@@ -11,7 +11,6 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
-import {ServerComponent} from './services/server/server.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +25,6 @@ const appRoutes: Routes = [
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget', component: WidgetListComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/new', component: WidgetChooserComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', component: WidgetEditComponent },
-  { path: 'server', component: ServerComponent},
   { path: '', pathMatch: 'full', redirectTo: 'login'}
 ];
 

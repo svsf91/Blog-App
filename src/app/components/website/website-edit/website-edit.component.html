@@ -31,7 +31,7 @@
           <a [routerLink]="['../', web._id, 'page']">
             {{web.name}}
           </a>
-          <a [routerLink]="['../', web._id]">
+          <a (click)="jumpToEdit(web._id)">
             <span class="glyphicon glyphicon-cog pull-right"></span>
           </a>
         </li>
@@ -41,7 +41,7 @@
   <div class="col-xs-12 col-sm-8">
     <form>
       <label>Name</label>
-      <input class="form-control" type="text" placeholder="{{websiteName}}">
+      <input class="form-control" type="text" placeholder="{{website.name}}">
       <label>Description</label>
       <textarea class="form-control" type="text" placeholder="Description"></textarea>
       <button routerLink="../" class="btn btn-danger btn-block">Delete</button>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Website} from '../../class/Website';
+import {Website} from '../../../models/Website';
 
 
 @Component({
@@ -9,8 +9,11 @@ import {Website} from '../../class/Website';
   templateUrl: './website-list.component.html',
   styleUrls: ['./website-list.component.css']
 })
+@Injectable()
 export class WebsiteListComponent implements OnInit {
   userId: string;
+  websiteId: string;
+  website: Website;
   websites: Website[];
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
@@ -23,10 +26,4 @@ export class WebsiteListComponent implements OnInit {
     );
     this.websites = this.websiteService.findWebsiteByUser(this.userId);
   }
-  // goBack() {
-  //   this.router.navigate(['/user', this.userId]);
-  // }
-  // editWebsite(websiteId: string) {
-  //   this.router.navigate(['/user', this.userId, 'website', websiteId]);
-  // }
 }

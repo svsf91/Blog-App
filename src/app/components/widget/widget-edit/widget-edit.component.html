@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
-        <a class="navbar-left navbar-brand pull-left" [routerLink]="['/user/123/website/123/page/123/widget']">
+        <a class="navbar-left navbar-brand pull-left" [routerLink]="['../']">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
         <div class="navbar-header navbar-brand hidden-xs">
@@ -14,7 +14,7 @@
         <div class="navbar-header navbar-brand">
           Widget Edit
         </div>
-        <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user/123/website/123/page/123/widget']">
+        <a class="navbar-right navbar-brand pull-right" [routerLink]="['../']">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -22,66 +22,31 @@
   </div>
 </nav>
 
-<div class="container-fluid, myBody">
-  <div class="row">
-    <div class="col-sm-3 hidden-xs">
+<div class="container-fluid myBody">
+  <div class="col-sm-4 hidden-xs">
+
+    <div *ngFor="let wid of widgets">
       <ul class="list-group">
         <li class="list-group-item">
-          <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
-            Header
+          <a [routerLink]="['../', wid._id]">
+            {{wid.widgetType}}
           </a>
-        </li>
-        <li class="list-group-item">
-          Label
-        </li>
-        <li class="list-group-item">
-          HTML
-        </li>
-        <li class="list-group-item">
-          Text Input
-        </li>
-        <li class="list-group-item">
-          Link
-        </li>
-        <li class="list-group-item">
-          Button
-        </li>
-        <li class="list-group-item">
-          <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
-            Image
+          <a (click)="jumpToEdit(wid._id)">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
           </a>
-        </li>
-
-        <li class="list-group-item">
-          <a [routerLink]="['/user/123/website/123/page/123/widget/123']">
-            YouTube
-          </a>
-        </li>
-
-        <li class="list-group-item">
-          Data Table
-        </li>
-
-        <li class="list-group-item">
-          Repeater
         </li>
       </ul>
     </div>
-
-    <div class="col-sm-9">
-      <label>Name</label>
-      <input class="form-control"
-             placeholder="Name"/>
-      <label>Text</label>
-      <input class="form-control"
-             placeholder="Text"/>
-      <label>Size</label>
-      <input class="form-control"
-             placeholder="3"/>
-      <br/>
-      <a [routerLink]="['/user/123/website/123/page/123/widget']" class="btn btn-danger btn-block">
-        Delete
-      </a>
+  </div>
+  <div [ngSwitch]="widget.widgetType">
+    <div *ngSwitchCase="'HEADING'">
+      <app-widget-header></app-widget-header>
+    </div>
+    <div *ngSwitchCase="'IMAGE'">
+      <app-widget-image></app-widget-image>
+    </div>
+    <div *ngSwitchCase="'YOUTUBE'">
+      <app-widget-youtube></app-widget-youtube>
     </div>
   </div>
 </div>

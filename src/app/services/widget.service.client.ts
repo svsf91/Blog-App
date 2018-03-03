@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
-import {Widget} from '../components/class/Widget';
+import {Widget} from '../models/Widget';
 
 export class WidgetService {
   constructor() {

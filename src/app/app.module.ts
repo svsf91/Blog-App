@@ -23,9 +23,6 @@ import {WidgetService} from './services/widget.service.client';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
-import {ServerComponent} from './services/server/server.component';
-import {HttpModule} from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,13 +42,11 @@ import {HttpClientModule} from '@angular/common/http';
     WidgetHeaderComponent,
     WidgetImageComponent,
     WidgetYoutubeComponent,
-    ServerComponent
   ],
   imports: [
     BrowserModule,
     Routing,
     FormsModule,
-    HttpClientModule
   ],
   providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
