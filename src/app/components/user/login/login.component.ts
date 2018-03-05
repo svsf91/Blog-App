@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/User';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +15,17 @@ export class LoginComponent implements OnInit {
   // properties
   username: string;
   password: string;
-  user: User;
+  user: any;
   errorFlag: boolean;
   errorMsg: string;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.findUserByUserName('asdf').subscribe(
-      data => {
-        console.log(data);
-        console.log(data['username']);
-        console.log(data['password']);
-      }
-    );
+      (user: User) => {
+        console.log(user);
+        this.user = user;
+      });
   }
   login() {
     this.user = this.userService.findUserByUsername(this.username);

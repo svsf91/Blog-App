@@ -1,12 +1,37 @@
 <div class="container-fluid">
+  <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMsg}}
+  </div>
   <h1>Register</h1>
-  <form>
-    <input class="form-control" placeholder="username" type="text" id="username">
-    <input class="form-control" placeholder="password" type="password" id="password">
-    <input class="form-control" placeholder="verify password" type="password" id="verify">
-    <a routerLink="/register" class="btn btn-primary btn-block">
+  <form (ngSubmit)="register()" #f="ngForm">
+    <input placeholder="username"
+           name="username"
+           type="text"
+           class="form-control"
+           [(ngModel)]="username" required #name="ngModel"/>
+    <span class="help-block" *ngIf="name.touched && name.invalid">
+      Please enter username!
+    </span>
+    <input placeholder="password"
+           name="password"
+           type="password"
+           class="form-control"
+           [(ngModel)]="password" required #pass="ngModel"/>
+    <span class="help-block" *ngIf="pass.touched && pass.invalid">
+      Please enter password!
+    </span>
+    <input placeholder="verify password"
+           name="verify"
+           type="password"
+           class="form-control"
+           [(ngModel)]="verify" required #veri="ngModel">
+    <span class="help-block" *ngIf="veri.touched && veri.invalid">
+    </span>
+    <button type="submit"
+            class="btn btn-primary btn-block"
+            [disabled]="f.invalid">
       Register
-    </a>
+    </button>
     <button routerLink="/login" class="btn btn-danger btn-block">
       Cancel
     </button>
