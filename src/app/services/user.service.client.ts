@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {User} from '../models/User';
-import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 
 // injecting service into module
@@ -62,10 +60,9 @@ export class UserService {
   login(username: string, password: string) {
     const url = '/api/login';
     const credentials = {
-      username: username;
-    password: password;
-  }
-    ;
+      username: username,
+      password: password
+    };
     return this.http.post(url, credentials);
   }
 
