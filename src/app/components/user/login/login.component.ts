@@ -1,14 +1,16 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/User';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+@Injectable()
 export class LoginComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
   // properties
@@ -19,7 +21,15 @@ export class LoginComponent implements OnInit {
   errorMsg: string;
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.findUserByUserName('asdf').subscribe(
+      data => {
+        console.log(data);
+        console.log(data['username']);
+        console.log(data['password']);
+      }
+    );
+  }
   login() {
     this.user = this.userService.findUserByUsername(this.username);
     if (this.user) {

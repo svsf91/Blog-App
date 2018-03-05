@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User} from '../models/User';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 // injecting service into module
 @Injectable()
@@ -17,7 +19,7 @@ export class UserService {
     'findUserById': this.findUserById
   };
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   createUser(user: User) {
@@ -55,5 +57,9 @@ export class UserService {
         this.users.splice(x, 1);
       }
     }
+  }
+  findUserByUserName(username) {
+    const url = '/api/user?username=' + username;
+    return this.http.get(url);
   }
 }
