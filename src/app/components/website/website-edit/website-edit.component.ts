@@ -23,12 +23,12 @@ export class WebsiteEditComponent implements OnInit {
         this.userId = params['userId'];
       }
     );
-    this.websites = this.websiteService.findWebsiteByUser(this.userId);
-    this.website = this.websiteService.findWebsiteById(this.websiteId);
+    // this.websites = this.websiteService.findWebsiteByUser(this.userId);
+    // this.website = this.websiteService.findWebsiteById(this.websiteId);
   }
   jumpToEdit(websiteId) {
     this.websiteId = websiteId;
-    this.website = this.websiteService.findWebsiteById(this.websiteId);
+    // this.website = this.websiteService.findWebsiteById(this.websiteId);
     this.router.navigate(['/user', this.userId, 'website', this.websiteId]);
   }
 }

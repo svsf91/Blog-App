@@ -24,6 +24,6 @@ export class WebsiteListComponent implements OnInit {
         this.userId = params['userId'];
       }
     );
-    this.websites = this.websiteService.findWebsiteByUser(this.userId);
+    // this.websites = this.websiteService.findWebsiteByUser(this.userId);
   }
 }

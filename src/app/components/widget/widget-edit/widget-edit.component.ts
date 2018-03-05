@@ -28,12 +28,12 @@ export class WidgetEditComponent implements OnInit {
         this.pageId = params['pageId'];
       }
     );
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
-    this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
+    // this.widget = this.widgetService.findWidgetById(this.widgetId);
+    // this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
   }
   jumpToEdit(widgetId) {
     this.widgetId = widgetId;
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
+    // this.widget = this.widgetService.findWidgetById(this.widgetId);
     this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget', this.widgetId]);
   }
 }

@@ -285,13 +285,13 @@ var PageEditComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.pageId = params['pageId'];
         });
-        this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-        this.page = this.pageService.findPageById(this.pageId);
+        // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+        // this.page = this.pageService.findPageById(this.pageId);
         this.pageName = this.page.name;
     };
     PageEditComponent.prototype.jumpToEdit = function (pageId) {
         this.pageId = pageId;
-        this.page = this.pageService.findPageById(this.pageId);
+        // this.page = this.pageService.findPageById(this.pageId);
         this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId]);
     };
     PageEditComponent = __decorate([
@@ -369,8 +369,8 @@ var PageListComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.pageId = params['pageId'];
         });
-        this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-        this.page = this.pageService.findPageById(this.pageId);
+        // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+        // this.page = this.pageService.findPageById(this.pageId);
     };
     PageListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -447,8 +447,8 @@ var PageNewComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.pageId = params['pageId'];
         });
-        this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-        this.page = this.pageService.findPageById(this.pageId);
+        // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+        // this.page = this.pageService.findPageById(this.pageId);
     };
     PageNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -521,27 +521,21 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.userService.findUserByUserName('asdf').subscribe(function (user) {
-            console.log(user);
-            _this.user = user;
-        });
     };
     LoginComponent.prototype.login = function () {
-        this.user = this.userService.findUserByUsername(this.username);
-        if (this.user) {
-            if (this.password === this.user.password) {
-                this.router.navigate(['/user', this.user._id]);
+        var _this = this;
+        this.userService.login(this.username, this.password)
+            .subscribe(function (response) {
+            console.log(response);
+            _this.user = response;
+            if (_this.user) {
+                _this.router.navigate(['/user', _this.user._id]);
             }
             else {
-                this.errorFlag = true;
-                this.errorMsg = 'Invalid Password';
+                _this.errorFlag = true;
+                _this.errorMsg = 'Invalid Password';
             }
-        }
-        else {
-            this.errorFlag = true;
-            this.errorMsg = 'Invalid Username';
-        }
+        });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('f'),
@@ -675,6 +669,7 @@ module.exports = "<div class=\"container-fluid\">\n  <div *ngIf=\"errorFlag\" cl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -687,21 +682,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(userService) {
+    function RegisterComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
     RegisterComponent.prototype.register = function () {
-        var newUser = {
-            'username': this.username,
-            'password': this.password,
-            'firstName': '',
-            'lastName': '',
-            'email': ''
-        };
-        this.userService.createUser(newUser).subscribe(function (res) { return console.log(res); });
+        var _this = this;
+        var user;
+        this.userService.findUserByUsername(this.username).subscribe(function (response) {
+            user = response;
+            if (user) {
+                _this.errorFlag = true;
+                _this.errorMsg = 'User already exists';
+            }
+            else {
+                var newUser = {
+                    'username': _this.username,
+                    'password': _this.password,
+                    'firstName': '',
+                    'lastName': '',
+                    'email': ''
+                };
+                _this.userService.createUser(newUser).subscribe(function (res) {
+                    user = res;
+                    _this.router.navigate(['/user', user._id]);
+                });
+            }
+        });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('f'),
@@ -714,7 +725,7 @@ var RegisterComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/components/user/register/register.component.css")]
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -781,12 +792,12 @@ var WebsiteEditComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.userId = params['userId'];
         });
-        this.websites = this.websiteService.findWebsiteByUser(this.userId);
-        this.website = this.websiteService.findWebsiteById(this.websiteId);
+        // this.websites = this.websiteService.findWebsiteByUser(this.userId);
+        // this.website = this.websiteService.findWebsiteById(this.websiteId);
     };
     WebsiteEditComponent.prototype.jumpToEdit = function (websiteId) {
         this.websiteId = websiteId;
-        this.website = this.websiteService.findWebsiteById(this.websiteId);
+        // this.website = this.websiteService.findWebsiteById(this.websiteId);
         this.router.navigate(['/user', this.userId, 'website', this.websiteId]);
     };
     WebsiteEditComponent = __decorate([
@@ -863,7 +874,7 @@ var WebsiteListComponent = /** @class */ (function () {
         this.activatedRoute.params.subscribe(function (params) {
             _this.userId = params['userId'];
         });
-        this.websites = this.websiteService.findWebsiteByUser(this.userId);
+        // this.websites = this.websiteService.findWebsiteByUser(this.userId);
     };
     WebsiteListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -941,8 +952,8 @@ var WebsiteNewComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.userId = params['userId'];
         });
-        this.websites = this.websiteService.findWebsiteByUser(this.userId);
-        this.website = this.websiteService.findWebsiteById(this.websiteId);
+        // this.websites = this.websiteService.findWebsiteByUser(this.userId);
+        // this.website = this.websiteService.findWebsiteById(this.websiteId);
     };
     WebsiteNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1083,12 +1094,12 @@ var WidgetEditComponent = /** @class */ (function () {
             _this.userId = params['userId'];
             _this.pageId = params['pageId'];
         });
-        this.widget = this.widgetService.findWidgetById(this.widgetId);
-        this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
+        // this.widget = this.widgetService.findWidgetById(this.widgetId);
+        // this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
     };
     WidgetEditComponent.prototype.jumpToEdit = function (widgetId) {
         this.widgetId = widgetId;
-        this.widget = this.widgetService.findWidgetById(this.widgetId);
+        // this.widget = this.widgetService.findWidgetById(this.widgetId);
         this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget', this.widgetId]);
     };
     WidgetEditComponent = __decorate([
@@ -1350,7 +1361,7 @@ var WidgetListComponent = /** @class */ (function () {
             _this.websiteId = params['websiteId'];
             _this.pageId = params['pageId'];
         });
-        this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
+        // this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
     };
     WidgetListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1375,6 +1386,7 @@ var WidgetListComponent = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PageService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1385,64 +1397,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 // injecting service into module
 var PageService = /** @class */ (function () {
-    function PageService() {
-        this.pages = [
-            { '_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'Lorem' },
-            { '_id': '432', 'name': 'Post 2', 'websiteId': '456', 'description': 'Lorem' },
-            { '_id': '543', 'name': 'Post 3', 'websiteId': '456', 'description': 'Lorem' },
-            { '_id': '123', 'name': 'Post 1', 'websiteId': '123', 'description': 'Lorem' },
-            { '_id': '234', 'name': 'Post 2', 'websiteId': '234', 'description': 'Lorem' },
-            { '_id': '345', 'name': 'Post 3', 'websiteId': '345', 'description': 'Lorem' },
-            { '_id': '456', 'name': 'Post 1', 'websiteId': '567', 'description': 'Lorem' },
-            { '_id': '567', 'name': 'Post 2', 'websiteId': '678', 'description': 'Lorem' },
-            { '_id': '678', 'name': 'Post 3', 'websiteId': '789', 'description': 'Lorem' },
-            { '_id': '789', 'name': 'Post 1', 'websiteId': '678', 'description': 'Lorem' },
-            { '_id': '134', 'name': 'Post 2', 'websiteId': '789', 'description': 'Lorem' },
-            { '_id': '245', 'name': 'Post 3', 'websiteId': '890', 'description': 'Lorem' }
-        ];
+    function PageService(http) {
+        this.http = http;
         this.api = {
             'createPage': this.createPage,
-            'findPageByWebsiteId': this.findPageByWebsiteId,
             'findPageById': this.findPageById,
-            'updatePage': this.updagePage,
-            'deletePage': this.deletePage
+            'findPageByWebsiteId': this.findPageByWebsiteId,
+            'updatePage': this.updatePage,
+            'removePage': this.removePage
         };
     }
     PageService.prototype.createPage = function (websiteId, page) {
-        page._id = Math.random();
-        page.websiteId = websiteId;
-        this.pages.push(page);
-        return page;
+        var url = '/api/website/' + websiteId + '/page';
+        return this.http.post(url, page);
     };
     PageService.prototype.findPageByWebsiteId = function (websiteId) {
-        return this.pages.filter(function (p) { return p.websiteId === websiteId; });
+        var url = '/api/website/' + websiteId + '/page';
+        return this.http.get(url);
     };
     PageService.prototype.findPageById = function (pageId) {
-        for (var x = 0; x < this.pages.length; x++) {
-            if (this.pages[x]._id === pageId) {
-                return this.pages[x];
-            }
-        }
+        var url = '/api/page' + pageId;
+        return this.http.get(url);
     };
-    PageService.prototype.updagePage = function (pageId, page) {
-        for (var x = 0; x < this.pages.length; x++) {
-            if (this.pages[x]._id === pageId) {
-                this.pages[x] = page;
-            }
-        }
+    PageService.prototype.updatePage = function (pageId, page) {
+        var url = '/api/page/' + pageId;
+        return this.http.put(url, page);
     };
-    PageService.prototype.deletePage = function (pageId) {
-        for (var x = 0; x < this.pages.length; x++) {
-            if (this.pages[x]._id === pageId) {
-                this.pages.splice(x, 1);
-            }
-        }
+    PageService.prototype.removePage = function (pageId) {
+        var url = '/api/page/' + pageId;
+        return this.http.delete(url);
     };
     PageService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], PageService);
     return PageService;
 }());
@@ -1473,15 +1463,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
-        this.users = [
-            { _id: '123', username: 'alice', password: 'alice', firstName: 'Alice', lastName: 'Wonder' },
-            { _id: '234', username: 'bob', password: 'bob', firstName: 'Bob', lastName: 'Marley' },
-            { _id: '345', username: 'charly', password: 'charly', firstName: 'Charly', lastName: 'Garcia' },
-            { _id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose', lastName: 'Annunzi' }
-        ];
         this.api = {
             'createUser': this.createUser,
-            'findUserById': this.findUserById
+            'findUserById': this.findUserById,
+            'findUserByUsername': this.findUserByUsername,
+            'findUserByCredentials': this.findUserByCredentials,
+            'updateUser': this.updateUser,
+            'deleteUser': this.deleteUser,
+            'login': this.login,
+            'checkLoggedIn': this.checkLoggedIn,
+            'logout': this.logout,
+            'register': this.register
         };
     }
     UserService.prototype.createUser = function (user) {
@@ -1489,35 +1481,43 @@ var UserService = /** @class */ (function () {
         return this.http.post(url, user);
     };
     UserService.prototype.findUserById = function (userId) {
-        for (var x = 0; x < this.users.length; x++) {
-            if (this.users[x]._id === userId) {
-                return this.users[x];
-            }
-        }
+        var url = '/api/user/' + userId;
+        return this.http.get(url);
     };
     UserService.prototype.findUserByUsername = function (username) {
-        for (var x = 0; x < this.users.length; x++) {
-            if (this.users[x].username === username) {
-                return this.users[x];
-            }
-        }
+        var url = '/api/user?username=' + username;
+        return this.http.get(url);
+    };
+    UserService.prototype.findUserByCredentials = function (username, password) {
+        var url = '/api/user?username=' + username + '&password=' + password;
+        return this.http.get(url);
     };
     UserService.prototype.updateUser = function (userId, user) {
-        for (var x = 0; x < this.users.length; x++) {
-            if (this.users[x]._id === userId) {
-                this.users[x] = user;
-            }
-        }
+        var url = '/api/user/' + userId;
+        return this.http.put(url, user);
     };
     UserService.prototype.deleteUser = function (userId) {
-        for (var x = 0; x < this.users.length; x++) {
-            if (this.users[x]._id === userId) {
-                this.users.splice(x, 1);
-            }
-        }
+        var url = '/api/user/' + userId;
+        return this.http.delete(url);
     };
-    UserService.prototype.findUserByUserName = function (username) {
-        var url = '/api/user?username=' + username;
+    UserService.prototype.checkLoggedIn = function () {
+        var url = 'api/checkLoggedIn';
+        return this.http.get(url);
+    };
+    UserService.prototype.login = function (username, password) {
+        var url = '/api/login';
+        var credentials = {
+            username: username,
+            password: password
+        };
+        return this.http.post(url, credentials);
+    };
+    UserService.prototype.register = function (user) {
+        var url = 'api/register';
+        return this.http.post(url, user);
+    };
+    UserService.prototype.logout = function () {
+        var url = '/api/logout';
         return this.http.get(url);
     };
     UserService = __decorate([
@@ -1536,55 +1536,66 @@ var UserService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebsiteService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 var WebsiteService = /** @class */ (function () {
-    function WebsiteService() {
-        this.websites = [
-            { '_id': '123', 'name': 'Facebook', 'developerId': '456', 'description': 'Lorem' },
-            { '_id': '234', 'name': 'Tweeter', 'developerId': '456', 'description': 'Lorem' },
-            { '_id': '456', 'name': 'Gizmodo', 'developerId': '456', 'description': 'Lorem' },
-            { '_id': '890', 'name': 'Go', 'developerId': '123', 'description': 'Lorem' },
-            { '_id': '567', 'name': 'Tic Tac Toe', 'developerId': '123', 'description': 'Lorem' },
-            { '_id': '678', 'name': 'Checkers', 'developerId': '123', 'description': 'Lorem' },
-            { '_id': '789', 'name': 'Chess', 'developerId': '234', 'description': 'Lorem' }
-        ];
+    function WebsiteService(http) {
+        this.http = http;
         this.api = {
+            //    'getNextId': this.getNextId,
             'createWebsite': this.createWebsite,
-            'findWebsiteByUser': this.findWebsiteByUser,
+            'findAllWebsitesForUser': this.findAllWebsitesForUser,
             'findWebsiteById': this.findWebsiteById,
             'updateWebsite': this.updateWebsite,
-            'deleteWebsite': this.deleteWebsite
+            'removeWebsite': this.removeWebsite
         };
     }
+    // getMaxId() {
+    //   function getMaxId(maxId, currentId) {
+    //     let current = parseInt(currentId._id);
+    //     if(maxId > current) {
+    //       return maxId;
+    //     } else {
+    //       return current + 1;
+    //     }
+    //   }
+    //   return websites.reduce(getMaxId, 0).toString();
+    // }
     WebsiteService.prototype.createWebsite = function (userId, website) {
-        website.developerId = userId;
-        website._id = Math.random().toString();
-        this.websites.push(website);
-        return website;
+        var url = '/api/user/' + userId + '/website';
+        return this.http.post(url, website);
+    };
+    WebsiteService.prototype.findAllWebsitesForUser = function (userId) {
+        var url = '/api/user/' + userId + '/website';
+        return this.http.get(url);
     };
     WebsiteService.prototype.findWebsiteById = function (websiteId) {
-        for (var x = 0; x < this.websites.length; x++) {
-            if (this.websites[x]._id === websiteId) {
-                return this.websites[x];
-            }
-        }
-    };
-    WebsiteService.prototype.findWebsiteByUser = function (userId) {
-        return this.websites.filter(function (x) { return x.developerId === userId; });
+        var url = '/api/website/' + websiteId;
+        return this.http.get(url);
     };
     WebsiteService.prototype.updateWebsite = function (websiteId, website) {
-        for (var x = 0; x < this.websites.length; x++) {
-            if (this.websites[x]._id === websiteId) {
-                this.websites[x] = website;
-            }
-        }
+        var url = '/api/website/' + websiteId;
+        return this.http.put(url, website);
     };
-    WebsiteService.prototype.deleteWebsite = function (websiteId) {
-        for (var x = 0; x < this.websites.length; x++) {
-            if (this.websites[x]._id === websiteId) {
-                this.websites.splice(x, 1);
-            }
-        }
+    WebsiteService.prototype.removeWebsite = function (websiteId) {
+        var url = '/api/website/' + websiteId;
+        return this.http.delete(url);
     };
+    WebsiteService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], WebsiteService);
     return WebsiteService;
 }());
 
@@ -1597,57 +1608,135 @@ var WebsiteService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WidgetService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 var WidgetService = /** @class */ (function () {
-    function WidgetService() {
-        this.widgets = [
-            { '_id': '123', 'widgetType': 'HEADING', 'pageId': '321', 'size': 2, 'text': 'GIZMODO' },
-            { '_id': '234', 'widgetType': 'HEADING', 'pageId': '321', 'size': 4, 'text': 'Lorem ipsum' },
-            { '_id': '345', 'widgetType': 'IMAGE', 'pageId': '321', 'width': '100%',
-                'url': 'http://lorempixel.com/400/200/' },
-            { '_id': '456', 'widgetType': 'HTML', 'pageId': '321', 'text': '<p>Lorem ipsum</p>' },
-            { '_id': '567', 'widgetType': 'HEADING', 'pageId': '321', 'size': 4, 'text': 'Lorem ipsum' },
-            { '_id': '678', 'widgetType': 'YOUTUBE', 'pageId': '321', 'width': '100%',
-                'url': 'https://youtu.be/AM2Ivdi9c4E' },
-            { '_id': '789', 'widgetType': 'HTML', 'pageId': '321', 'text': '<p>Lorem ipsum</p>' }
-        ];
+    function WidgetService(http) {
+        this.http = http;
         this.api = {
+            'HEADING': this.createHeaderWidget,
+            'IMAGE': this.createImageWidget,
+            'YOUTUBE': this.createYouTubeWidget,
+            'HTML': this.createHTMLWidget,
+            'LINK': this.createLinkWidget,
+            'TEXTINPUT': this.createTextInputWidget,
+            'LABEL': this.createLabelWidget,
+            'BUTTON': this.createButtonWidget,
+            'REPEATER': this.createRepeaterWidget,
+            'DATATABLE': this.createDataTableWidget,
             'createWidget': this.createWidget,
-            'findWidgetByPageId': this.findWidgetByPageId,
+            'findWidgetsByPageId': this.findWidgetsByPageId,
             'findWidgetById': this.findWidgetById,
             'updateWidget': this.updateWidget,
-            'deleteWidget': this.deleteWidget
+            'deleteWidget': this.deleteWidget,
+            'deleteWidgetsByPage': this.deleteWidgetsByPage,
+            'reorderWidgets': this.reorderWidgets
         };
     }
+    WidgetService.prototype.createHeaderWidget = function (widgetId, pageId, widget) {
+        var header = {
+            _id: widgetId,
+            widgetType: 'HEADING',
+            pageId: pageId,
+            size: widget.widgetSize,
+            name: widget.widgetName,
+            text: widget.widgetText
+        };
+    };
+    WidgetService.prototype.createLabelWidget = function (widgetId, pageId, widget) {
+    };
+    WidgetService.prototype.createHTMLWidget = function (widgetId, pageId, widget) {
+        return {
+            _id: widgetId,
+            widgetType: 'HTML',
+            pageId: pageId,
+            name: widget.name,
+            text: widget.text
+        };
+    };
+    WidgetService.prototype.createTextInputWidget = function (widgetId, pageId, widget) {
+    };
+    WidgetService.prototype.createLinkWidget = function (widgetId, pageId, widget) {
+    };
+    WidgetService.prototype.createButtonWidget = function (widgetId, pageId, widget) {
+    };
+    WidgetService.prototype.createImageWidget = function (widgetId, pageId, widget) {
+        return {
+            _id: widgetId,
+            widgetType: 'IMAGE',
+            pageId: pageId,
+            width: widget.width,
+            url: widget.url,
+            name: widget.name,
+            text: widget.text
+        };
+    };
+    WidgetService.prototype.createYouTubeWidget = function (widgetId, pageId, widget) {
+        return {
+            _id: widgetId,
+            widgetType: 'YOUTUBE',
+            pageId: pageId,
+            name: widget.name,
+            text: widget.text,
+            width: widget.width,
+            url: widget.url
+        };
+    };
+    WidgetService.prototype.createDataTableWidget = function (widgetId, pageId, widget) {
+    };
+    WidgetService.prototype.createRepeaterWidget = function (widgetId, pageId, widget) {
+    };
+    /*
+     * Standard CRUD
+     */
     WidgetService.prototype.createWidget = function (pageId, widget) {
-        widget.pageId = pageId;
-        widget._id = Math.random().toString();
-        this.widgets.push(widget);
-        return widget;
+        var url = '/api/page/' + pageId + '/widget';
+        return this.http.post(url, widget);
+    };
+    WidgetService.prototype.findWidgetsByPageId = function (pageId) {
+        var url = '/api/page/' + pageId + '/widget';
+        return this.http.get(url);
     };
     WidgetService.prototype.findWidgetById = function (widgetId) {
-        for (var x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                return this.widgets[x];
-            }
-        }
-    };
-    WidgetService.prototype.findWidgetByPageId = function (pageId) {
-        return this.widgets.filter(function (w) { return w.pageId === pageId; });
+        var url = '/api/widget/' + widgetId;
+        return this.http.get(url);
     };
     WidgetService.prototype.updateWidget = function (widgetId, widget) {
-        for (var x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                this.widgets[x] = widget;
-            }
-        }
+        var url = '/api/widget/' + widgetId;
+        return this.http.put(url, widget);
     };
     WidgetService.prototype.deleteWidget = function (widgetId) {
-        for (var x = 0; x < this.widgets.length; x++) {
-            if (this.widgets[x]._id === widgetId) {
-                this.widgets.splice(x, 1);
+        var url = '/api/widget/' + widgetId;
+        return this.http.delete(url);
+    };
+    WidgetService.prototype.deleteWidgetsByPage = function (pageId) {
+        var _this = this;
+        this.findWidgetsByPageId(pageId).subscribe(function (response) { return _this.widgets = response; });
+        for (var widget in this.widgets) {
+            if (widget['pageId'] === pageId) {
+                this.deleteWidget(widget['_id']);
             }
         }
     };
+    WidgetService.prototype.reorderWidgets = function (pageId, start, end) {
+        var url = '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + end;
+        return this.http.put(url, '');
+    };
+    WidgetService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], WidgetService);
     return WidgetService;
 }());
 

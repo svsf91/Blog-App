@@ -1,62 +1,142 @@
-import {Injectable} from '@angular/core';
-import {Http, RequestOptions, Response} from '@angular/http';
-import {environment} from '../../environments/environment';
-import {Router} from '@angular/router';
 import {Widget} from '../models/Widget';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class WidgetService {
-  constructor() {
-  }
-  widgets: Widget[] = [
-    { '_id': '123', 'widgetType': 'HEADING', 'pageId': '321', 'size': 2, 'text': 'GIZMODO'},
-    { '_id': '234', 'widgetType': 'HEADING', 'pageId': '321', 'size': 4, 'text': 'Lorem ipsum'},
-    { '_id': '345', 'widgetType': 'IMAGE', 'pageId': '321', 'width': '100%',
-      'url': 'http://lorempixel.com/400/200/'},
-    { '_id': '456', 'widgetType': 'HTML', 'pageId': '321', 'text': '<p>Lorem ipsum</p>'},
-    { '_id': '567', 'widgetType': 'HEADING', 'pageId': '321', 'size': 4, 'text': 'Lorem ipsum'},
-    { '_id': '678', 'widgetType': 'YOUTUBE', 'pageId': '321', 'width': '100%',
-      'url': 'https://youtu.be/AM2Ivdi9c4E' },
-    { '_id': '789', 'widgetType': 'HTML', 'pageId': '321', 'text': '<p>Lorem ipsum</p>'}
-  ];
+  widgets: any;
   api = {
+    'HEADING': this.createHeaderWidget,
+    'IMAGE': this.createImageWidget,
+    'YOUTUBE': this.createYouTubeWidget,
+    'HTML': this.createHTMLWidget,
+    'LINK': this.createLinkWidget,
+    'TEXTINPUT': this.createTextInputWidget,
+    'LABEL': this.createLabelWidget,
+    'BUTTON': this.createButtonWidget,
+    'REPEATER': this.createRepeaterWidget,
+    'DATATABLE': this.createDataTableWidget,
     'createWidget': this.createWidget,
-    'findWidgetByPageId': this.findWidgetByPageId,
+    'findWidgetsByPageId': this.findWidgetsByPageId,
     'findWidgetById': this.findWidgetById,
     'updateWidget': this.updateWidget,
-    'deleteWidget': this.deleteWidget
+    'deleteWidget': this.deleteWidget,
+    'deleteWidgetsByPage': this.deleteWidgetsByPage,
+    'reorderWidgets': this.reorderWidgets
   };
 
-  createWidget(pageId: string, widget: Widget) {
-    widget.pageId = pageId;
-    widget._id = Math.random().toString();
-    this.widgets.push(widget);
-    return widget;
+  constructor(private http: HttpClient) {
+  }
+
+  createHeaderWidget(widgetId: string, pageId: string, widget) {
+    const header = {
+      _id: widgetId,
+      widgetType: 'HEADING',
+      pageId: pageId,
+      size: widget.widgetSize,
+      name: widget.widgetName,
+      text: widget.widgetText
+    };
+  }
+
+  createLabelWidget(widgetId: string, pageId: string, widget) {
+  }
+
+  createHTMLWidget(widgetId: string, pageId: string, widget) {
+    return {
+      _id: widgetId,
+      widgetType: 'HTML',
+      pageId: pageId,
+      name: widget.name,
+      text: widget.text
+    };
+  }
+
+  createTextInputWidget(widgetId, pageId, widget) {
+  }
+
+  createLinkWidget(widgetId, pageId, widget) {
+  }
+
+  createButtonWidget(widgetId, pageId, widget) {
+  }
+
+  createImageWidget(widgetId: string, pageId: string, widget) {
+    return {
+      _id: widgetId,
+      widgetType: 'IMAGE',
+      pageId: pageId,
+      width: widget.width,
+      url: widget.url,
+      name: widget.name,
+      text: widget.text
+    };
+
+  }
+
+  createYouTubeWidget(widgetId: string, pageId: string, widget) {
+    return {
+      _id: widgetId,
+      widgetType: 'YOUTUBE',
+      pageId: pageId,
+      name: widget.name,
+      text: widget.text,
+      width: widget.width,
+      url: widget.url
+    };
+
+  }
+
+  createDataTableWidget(widgetId, pageId, widget) {
+
+  }
+
+  createRepeaterWidget(widgetId, pageId, widget) {
+
+  }
+
+
+  /*
+   * Standard CRUD
+   */
+  createWidget(pageId: string, widget) {
+    const url = '/api/page/' + pageId + '/widget';
+    return this.http.post(url, widget);
+  }
+
+  findWidgetsByPageId(pageId) {
+    const url = '/api/page/' + pageId + '/widget';
+    return this.http.get(url);
   }
 
   findWidgetById(widgetId: string) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        return this.widgets[x];
-      }
-    }
-  }
-  findWidgetByPageId(pageId: string) {
-    return this.widgets.filter(w => w.pageId === pageId);
+    const url = '/api/widget/' + widgetId;
+    return this.http.get(url);
   }
 
-  updateWidget(widgetId: string, widget: Widget) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        this.widgets[x] = widget;
-      }
-    }
+  updateWidget(widgetId: string, widget) {
+    const url = '/api/widget/' + widgetId;
+    return this.http.put(url, widget);
   }
 
-  deleteWidget(widgetId: string) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        this.widgets.splice(x, 1);
+  deleteWidget(widgetId) {
+    const url = '/api/widget/' + widgetId;
+    return this.http.delete(url);
+  }
+
+  deleteWidgetsByPage(pageId) {
+    this.findWidgetsByPageId(pageId).subscribe(
+      response => this.widgets = response);
+    for (const widget in this.widgets) {
+      if (widget['pageId'] === pageId) {
+        this.deleteWidget(widget['_id']);
       }
     }
+
+  }
+
+  reorderWidgets(pageId, start, end) {
+    const url = '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + end;
+    return this.http.put(url, '');
   }
 }

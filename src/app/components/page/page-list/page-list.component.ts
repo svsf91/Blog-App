@@ -24,7 +24,7 @@ export class PageListComponent implements OnInit {
         this.pageId = params['pageId'];
       }
     );
-    this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-    this.page = this.pageService.findPageById(this.pageId);
+    // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+    // this.page = this.pageService.findPageById(this.pageId);
   }
 }

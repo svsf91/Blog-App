@@ -27,13 +27,13 @@ export class PageEditComponent implements OnInit {
         this.pageId = params['pageId'];
       }
     );
-    this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-    this.page = this.pageService.findPageById(this.pageId);
+    // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+    // this.page = this.pageService.findPageById(this.pageId);
     this.pageName = this.page.name;
   }
   jumpToEdit(pageId) {
     this.pageId = pageId;
-    this.page = this.pageService.findPageById(this.pageId);
+    // this.page = this.pageService.findPageById(this.pageId);
     this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId]);
   }
 }
