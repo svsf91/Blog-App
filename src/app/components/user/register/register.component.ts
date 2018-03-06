@@ -1,6 +1,6 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {User} from '../../../models/User';
+import {User} from '../../../models/user.client.model';
 import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
 
@@ -32,14 +32,8 @@ export class RegisterComponent implements OnInit {
         this.errorFlag = true;
         this.errorMsg = 'User already exists';
       } else {
-        const newUser = {
-          'username': this.username,
-          'password': this.password,
-          'firstName': '',
-          'lastName': '',
-          'email': ''
-        };
-        this.userService.createUser(newUser).subscribe(
+        const NewUser = new User(this.username, this.password);
+        this.userService.createUser(NewUser).subscribe(
           res => {
             user = res;
             this.router.navigate(['/user', user._id]);

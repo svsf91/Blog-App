@@ -1,4 +1,4 @@
-import {Website} from '../models/Website';
+import {Website} from '../models/website.client.model';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
@@ -29,26 +29,26 @@ export class WebsiteService {
   // }
   createWebsite(userId: string, website) {
     const url = '/api/user/' + userId + '/website';
-    return this.http.post(url, website);
+    return this.http.post<Website>(url, website);
   }
 
   findAllWebsitesForUser(userId: string) {
     const url = '/api/user/' + userId + '/website';
-    return this.http.get(url);
+    return this.http.get<Website[]>(url);
   }
 
   findWebsiteById(websiteId: string) {
     const url = '/api/website/' + websiteId;
-    return this.http.get(url);
+    return this.http.get<Website>(url);
   }
 
   updateWebsite(websiteId: string, website) {
     const url = '/api/website/' + websiteId;
-    return this.http.put(url, website);
+    return this.http.put<Website>(url, website);
   }
 
   removeWebsite(websiteId: string) {
     const url = '/api/website/' + websiteId;
-    return this.http.delete(url);
+    return this.http.delete<Website>(url);
   }
 }

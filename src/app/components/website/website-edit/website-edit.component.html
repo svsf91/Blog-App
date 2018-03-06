@@ -16,22 +16,21 @@
       <div class="navbar-header navbar-brand">
         Edit Website
       </div>
-      <a class="navbar-right navbar-brand pull-right" routerLink="../">
+      <a class="navbar-right navbar-brand pull-right" (click)="updateWebsite()">
         <span class="glyphicon glyphicon-ok pull-right"></span>
       </a>
     </div>
   </div>
 </nav>
-<div class="container-fluid myBody">
+<div *ngIf="websites && website" class="container-fluid myBody">
   <div class="col-sm-4 hidden-xs">
-
     <div *ngFor="let web of websites">
       <ul class="list-group">
         <li class="list-group-item">
           <a [routerLink]="['../', web._id, 'page']">
             {{web.name}}
           </a>
-          <a (click)="jumpToEdit(web._id)">
+          <a (click)="editWebsite(web._id)">
             <span class="glyphicon glyphicon-cog pull-right"></span>
           </a>
         </li>
@@ -39,12 +38,17 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-8">
+    <div *ngIf="message" class="alert alert-info">
+      {{message}}
+    </div>
     <form>
       <label>Name</label>
-      <input class="form-control" type="text" placeholder="{{website.name}}">
+      <input [(ngModel)]="website.name" name="name"
+             class="form-control" type="text" placeholder="{{website.name}}">
       <label>Description</label>
-      <textarea class="form-control" type="text" placeholder="Description"></textarea>
-      <button routerLink="../" class="btn btn-danger btn-block">Delete</button>
+      <textarea [(ngModel)]="website.description" name="description"
+                class="form-control" type="text" placeholder="{{website.description}}"></textarea>
+      <button (click)="removeWebsite()" class="btn btn-danger btn-block">Delete</button>
     </form>
   </div>
 </div>

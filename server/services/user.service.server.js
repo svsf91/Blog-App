@@ -148,7 +148,7 @@ module.exports = function (app, models) {
   }
 
   function checkLoggedIn(req, res) {
-    res.send(req.isAuthenticated() ? req.user : '0');
+    res.send(req.isAuthenticated() ? req.user : undefined);
   }
 
   function register(req, res) {
@@ -286,7 +286,7 @@ module.exports = function (app, models) {
       .deleteUser(uid)
       .then(
         function (status) {
-          res.sendStatus(200);
+          res.send('');
         },
         function (error) {
           res.sendStatus(400).send(error);

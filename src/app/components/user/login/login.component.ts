@@ -2,7 +2,7 @@ import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
-import {User} from '../../../models/User';
+import {User} from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   // properties
   username: string;
   password: string;
-  user: any;
+  user: User;
   errorFlag: boolean;
   errorMsg: string;
 
@@ -27,15 +27,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.username, this.password)
-      .subscribe(response => {
-        console.log(response);
-        this.user = response;
-        if (this.user) {
+      .subscribe(
+        response => {
+          this.user = response;
           this.router.navigate(['/user', this.user._id]);
-        } else {
+        },
+        err => {
           this.errorFlag = true;
           this.errorMsg = 'Invalid Password';
-        }
-      });
+        });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Widget} from '../../../models/Widget';
+import {Widget} from '../../../models/widget.client.model';
 
 @Component({
   selector: 'app-widget-list',

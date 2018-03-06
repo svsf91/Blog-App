@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageService} from '../../../services/page.service.client';
-import {Page} from '../../../models/Page';
+import {Page} from '../../../models/page.client.model';
+import {StatusService} from '../../../services/status.service.client';
+import {User} from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-page-list',
@@ -9,22 +11,27 @@ import {Page} from '../../../models/Page';
   styleUrls: ['./page-list.component.css']
 })
 export class PageListComponent implements OnInit {
+  user: User;
   websiteId: string;
   pageId: string;
   pages: Page[];
   page: Page;
   constructor(private activatedRoute: ActivatedRoute,
               private pageService: PageService,
-              private router: Router) { }
+              private router: Router,
+              private statusService: StatusService) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.websiteId = params['websiteId'];
-        this.pageId = params['pageId'];
+    this.statusService.checkLoggedIn().subscribe(
+      response => {
+        this.user = response;
+        this.pageService.findPageByWebsiteId(this.user._id).subscribe(
+          res => this.pages = res
+        );
+      },
+      err => {
+        this.router.navigate(['/login']);
       }
     );
-    // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-    // this.page = this.pageService.findPageById(this.pageId);
   }
 }

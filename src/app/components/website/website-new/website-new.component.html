@@ -20,13 +20,13 @@
       <div class="navbar-header navbar-brand">
         New Website
       </div>
-      <a routerLink="../" class="navbar-right navbar-brand pull-right">
+      <a (click)="newWebsite()" class="navbar-right navbar-brand pull-right">
         <span class="glyphicon glyphicon-ok pull-right"></span>
       </a>
     </div>
   </div>
 </nav>
-<div class="container-fluid myBody">
+<div *ngIf="websites" class="container-fluid myBody">
   <div class="col-sm-4 hidden-xs">
     <div *ngFor="let web of websites">
       <ul class="list-group">
@@ -43,9 +43,9 @@
   </div>
   <div class="col-xs-12 col-sm-8">
     <label>Name</label>
-    <input class="form-control" type="text" placeholder="Name">
+    <input [(ngModel)]="name" class="form-control" type="text" placeholder="Name">
     <label>Description</label>
-    <textarea class="form-control" type="text" placeholder="Description"></textarea>
+    <textarea [(ngModel)]="description" class="form-control" type="text" placeholder="Description"></textarea>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

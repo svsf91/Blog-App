@@ -6,23 +6,31 @@
     <div class="navbar-header navbar-brand">
       Profile
     </div>
-    <a class="navbar-right navbar-brand pull-right" routerLink="./">
+    <a class="navbar-right navbar-brand pull-right" (click)="updateUser()">
       <span class="glyphicon glyphicon-ok"></span>
     </a>
   </div>
 </nav>
+
 <div class="container-fluid myBody">
+  <div *ngIf="message" class="alert alert-info">
+    {{message}}
+  </div>
   <label>Username</label>
-  <input [(ngModel)]="username" class="form-control" type="text"
-         id="username" placeholder="{{username}}">
+  <input [(ngModel)]="user.username" class="form-control" type="text"
+         id="username" placeholder="{{user.username}}">
   <label>Email</label>
-  <input class="form-control" type="text" id="email" placeholder="hugh@gmail.com">
+  <input [(ngModel)]="user.email" class="form-control" type="text"
+         id="email" placeholder="{{user.email}}">
   <label>Fisrt Name</label>
-  <input class="form-control" type="text" id="first-name" placeholder="hugh">
+  <input [(ngModel)]="user.firstName" class="form-control" type="text"
+         id="first-name" placeholder="{{user.firstName}}">
   <label>Last Name</label>
-  <input class="form-control" type="text" id="last-name" placeholder="deng">
+  <input [(ngModel)]="user.lastName" class="form-control" type="text"
+         id="last-name" placeholder="{{user.lastName}}">
   <a routerLink="./website" class="btn btn-primary btn-block">Website</a>
-  <button routerLink="/login" class="btn btn-danger btn-block">Logout</button>
+  <a (click)="removeUser()" class="btn btn-warning btn-block">Delete User</a>
+  <a (click)="logout()" class="btn btn-danger btn-block">Logout</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

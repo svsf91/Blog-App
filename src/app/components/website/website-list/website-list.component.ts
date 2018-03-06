@@ -1,7 +1,9 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Website} from '../../../models/Website';
+import {Website} from '../../../models/website.client.model';
+import {StatusService} from '../../../services/status.service.client';
+import {User} from '../../../models/user.client.model';
 
 
 @Component({
@@ -11,19 +13,26 @@ import {Website} from '../../../models/Website';
 })
 @Injectable()
 export class WebsiteListComponent implements OnInit {
-  userId: string;
-  websiteId: string;
-  website: Website;
+  user: User;
   websites: Website[];
+
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private statusService: StatusService) {
+  }
+
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.userId = params['userId'];
+    this.statusService.checkLoggedIn().subscribe(
+      response => {
+        this.user = response;
+        this.websiteService.findAllWebsitesForUser(this.user._id).subscribe(
+          res => this.websites = res
+        );
+      },
+      err => {
+        this.router.navigate(['/login']);
       }
     );
-    // this.websites = this.websiteService.findWebsiteByUser(this.userId);
   }
 }

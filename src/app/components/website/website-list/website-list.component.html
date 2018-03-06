@@ -11,7 +11,7 @@
     </a>
   </div>
 </nav>
-<div class="container-fluid myBody">
+<div *ngIf="websites" class="container-fluid myBody">
   <div *ngFor="let web of websites">
     <ul class="list-group">
       <li class="list-group-item">
@@ -27,7 +27,7 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" routerLink="../">
+    <a class="navbar-right navbar-brand pull-right" [routerLink]="['../']">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>

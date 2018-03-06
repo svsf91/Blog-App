@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebsiteService} from '../../../services/website.service.client';
-import {Website} from '../../../models/Website';
+import {Website} from '../../../models/website.client.model';
 import {WebsiteListComponent} from '../website-list/website-list.component';
+import {StatusService} from '../../../services/status.service.client';
+import {User} from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-website-new',
@@ -10,21 +12,33 @@ import {WebsiteListComponent} from '../website-list/website-list.component';
   styleUrls: ['./website-new.component.css']
 })
 export class WebsiteNewComponent implements OnInit {
-  websiteId: string;
-  userId: string;
+  user: User;
   website: Website;
   websites: Website[];
+  name: string;
+  description: string;
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {}
+              private router: Router,
+              private statusService: StatusService) {}
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.websiteId = params['websiteId'];
-        this.userId = params['userId'];
+    this.statusService.checkLoggedIn().subscribe(
+      response => {
+        this.user = response;
+        this.websiteService.findAllWebsitesForUser(this.user._id).subscribe(
+          res => this.websites = res
+        );
+      },
+      err => {
+        this.router.navigate(['/login']);
       }
     );
-    // this.websites = this.websiteService.findWebsiteByUser(this.userId);
-    // this.website = this.websiteService.findWebsiteById(this.websiteId);
+  }
+  newWebsite() {
+    const newWebsite = new Website(this.name, this.description);
+    this.websiteService.createWebsite(this.user._id, newWebsite).subscribe(
+      res => this.router.navigate(['/user', this.user._id, 'website']),
+      err => console.log('error add website')
+    );
   }
 }

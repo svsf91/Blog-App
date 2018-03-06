@@ -1,4 +1,4 @@
-import {Widget} from '../models/Widget';
+import {Widget} from '../models/widget.client.model';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
