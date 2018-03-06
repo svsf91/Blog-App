@@ -1,8 +1,11 @@
 module.exports = function() {
     var connectionString =  null;
+    var dbuser = process.env.DBUSER;
+    var dbpass = process.env.DBPASS;
+    var dburl = process.env.DBURL;
 
     if (process.env.MONGODB_URI) {
-        connectionString = 'mongodb://admin:admin@ds257808.mlab.com:57808/heroku_jjwsf0d9';
+        connectionString = 'mongodb://' + dbuser + ':' + dbpass + '@' + dburl;
     }
     else {
         connectionString = 'mongodb://localhost:27017/blogApp';
