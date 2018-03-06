@@ -25,13 +25,16 @@ export class PageListComponent implements OnInit {
     this.statusService.checkLoggedIn().subscribe(
       response => {
         this.user = response;
-        this.pageService.findPageByWebsiteId(this.user._id).subscribe(
-          res => this.pages = res
-        );
       },
       err => {
         this.router.navigate(['/login']);
       }
+    );
+    this.activatedRoute.params.subscribe(
+      params => this.websiteId = params['websiteId']
+    );
+    this.pageService.findPageByWebsiteId(this.websiteId).subscribe(
+      res => this.pages = res
     );
   }
 }

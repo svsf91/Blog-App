@@ -29,7 +29,7 @@ export class PageService {
   }
 
   findPageById(pageId: string) {
-    const url = '/api/page' + pageId;
+    const url = '/api/page/' + pageId;
     return this.http.get<Page>(url);
   }
 

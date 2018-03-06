@@ -50,7 +50,7 @@ export class WebsiteEditComponent implements OnInit {
   }
   removeWebsite() {
     this.websiteService.removeWebsite(this.websiteId).subscribe(
-      res => this.router.navigate(['../'])
+      res => this.router.navigate(['/user', this.user._id, 'website'])
     );
   }
   editWebsite(websiteId: string) {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page.client.model';
+import {StatusService} from '../../../services/status.service.client';
+import {User} from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-page-edit',
@@ -9,31 +11,57 @@ import {Page} from '../../../models/page.client.model';
   styleUrls: ['./page-edit.component.css']
 })
 export class PageEditComponent implements OnInit {
-  userId: string;
+  user: User;
   websiteId: string;
   pageId: string;
-  pageName: string;
   pages: Page[];
   page: Page;
+  message: string;
   constructor(private activatedRoute: ActivatedRoute,
               private pageService: PageService,
-              private router: Router) { }
+              private router: Router,
+              private statusService: StatusService) { }
 
   ngOnInit() {
+    this.statusService.checkLoggedIn().subscribe(
+      response => {
+        this.user = response;
+      },
+      err => {
+        this.router.navigate(['/login']);
+      }
+    );
     this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.userId = params['userId'];
+      params => {
         this.websiteId = params['websiteId'];
         this.pageId = params['pageId'];
       }
     );
-    // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-    // this.page = this.pageService.findPageById(this.pageId);
-    this.pageName = this.page.name;
+    this.pageService.findPageByWebsiteId(this.websiteId).subscribe(
+      res => this.pages = res
+    );
+    this.pageService.findPageById(this.pageId).subscribe(
+      res => this.page = res
+    );
   }
-  jumpToEdit(pageId) {
+  updatePage() {
+    this.pageService.updatePage(this.page._id, this.page).subscribe(
+      res => {
+        this.message = 'Page changes saved!';
+        this.ngOnInit();
+      },
+    err => this.message = 'Page changes failed!'
+    );
+  }
+  removePage() {
+    this.pageService.removePage(this.page._id).subscribe(
+      res => this.router.navigate(['../'])
+    );
+  }
+  editPage(pageId) {
     this.pageId = pageId;
     // this.page = this.pageService.findPageById(this.pageId);
-    this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId]);
+    this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', pageId]);
+    this.ngOnInit();
   }
 }

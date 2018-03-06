@@ -20,13 +20,14 @@
       <div class="navbar-header navbar-brand">
         New Website
       </div>
-      <a routerLink="../" class="navbar-right navbar-brand pull-right">
+      <a (click)="newPage()" class="navbar-right navbar-brand pull-right">
         <span class="glyphicon glyphicon-ok pull-right"></span>
       </a>
     </div>
   </div>
 </nav>
-<div class="container-fluid myBody">
+
+<div *ngIf="pages" class="container-fluid myBody">
   <div class="col-sm-4 hidden-xs">
     <div *ngFor="let pa of pages">
       <ul class="list-group">
@@ -43,14 +44,16 @@
   </div>
   <div class="col-xs-12 col-sm-8">
     <label>Name</label>
-    <input class="form-control" type="text" placeholder="Name">
+    <input [(ngModel)]="page.name" name="name"
+           class="form-control" type="text" placeholder="{{page.name}}">
     <label>Description</label>
-    <textarea class="form-control" type="text" placeholder="Description"></textarea>
+    <textarea [(ngModel)]="page.description" name="name"
+              class="form-control" type="text" placeholder="{{page.description}}"></textarea>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" routerLink="../../">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>

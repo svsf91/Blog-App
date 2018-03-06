@@ -13,7 +13,7 @@ import {User} from '../../../models/user.client.model';
 })
 export class WebsiteNewComponent implements OnInit {
   user: User;
-  website: Website;
+  website: Website = new Website('');
   websites: Website[];
   name: string;
   description: string;
@@ -35,8 +35,7 @@ export class WebsiteNewComponent implements OnInit {
     );
   }
   newWebsite() {
-    const newWebsite = new Website(this.name, this.description);
-    this.websiteService.createWebsite(this.user._id, newWebsite).subscribe(
+    this.websiteService.createWebsite(this.user._id, this.website).subscribe(
       res => this.router.navigate(['/user', this.user._id, 'website']),
       err => console.log('error add website')
     );

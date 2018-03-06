@@ -250,7 +250,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/page/page-edit/page-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <a class=\"navbar-left navbar-brand pull-left\" routerLink=\"../\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n      <div class=\"navbar-header navbar-brand\">\n        Pages\n      </div>\n      <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../new\">\n        <span class=\"glyphicon glyphicon-plus pull-right\"></span>\n      </a>\n    </div>\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        Edit Website\n      </div>\n      <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n\n    <div *ngFor=\"let pa of pages\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', pa._id, 'widget']\">\n            {{pa.name}}\n          </a>\n          <a (click)=\"jumpToEdit(pa._id)\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <form>\n      <label>Name</label>\n      <input class=\"form-control\" type=\"text\" placeholder=\"{{pageName}}\">\n      <label>Description</label>\n      <textarea class=\"form-control\" type=\"text\" placeholder=\"Description\"></textarea>\n      <button routerLink=\"../\" class=\"btn btn-danger btn-block\">Delete</button>\n    </form>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <a class=\"navbar-left navbar-brand pull-left\" routerLink=\"../\">\n        <span class=\"glyphicon glyphicon-chevron-left\"></span>\n      </a>\n      <div class=\"navbar-header navbar-brand\">\n        Pages\n      </div>\n      <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../new\">\n        <span class=\"glyphicon glyphicon-plus pull-right\"></span>\n      </a>\n    </div>\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        Edit Website\n      </div>\n      <a class=\"navbar-right navbar-brand pull-right\" (click)=\"updatePage()\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n<div *ngIf=\"pages && page\" class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n    <div *ngFor=\"let pa of pages\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', pa._id, 'widget']\">\n            {{pa.name}}\n          </a>\n          <a (click)=\"editPage(pa._id)\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <div *ngIf=\"message\" class=\"alert alert-info\">\n      {{message}}\n    </div>\n    <form>\n      <label>Name</label>\n      <input [(ngModel)]=\"page.name\" class=\"form-control\"\n             type=\"text\" name=\"name\" placeholder=\"{{page.name}}\">\n      <label>Description</label>\n      <textarea [(ngModel)]=\"page.description\" class=\"form-control\"\n                type=\"text\" name=\"description\" placeholder=\"{{page.description}}\"></textarea>\n      <button (click)=\"removePage()\" class=\"btn btn-danger btn-block\">Delete</button>\n    </form>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a *ngIf=\"user\" class=\"navbar-right navbar-brand pull-right\"\n       [routerLink]=\"['/user', user._id]\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -262,6 +262,7 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n\n  <d
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_page_service_client__ = __webpack_require__("../../../../../src/app/services/page.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_status_service_client__ = __webpack_require__("../../../../../src/app/services/status.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -274,27 +275,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PageEditComponent = /** @class */ (function () {
-    function PageEditComponent(activatedRoute, pageService, router) {
+    function PageEditComponent(activatedRoute, pageService, router, statusService) {
         this.activatedRoute = activatedRoute;
         this.pageService = pageService;
         this.router = router;
+        this.statusService = statusService;
     }
     PageEditComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.statusService.checkLoggedIn().subscribe(function (response) {
+            _this.user = response;
+        }, function (err) {
+            _this.router.navigate(['/login']);
+        });
         this.activatedRoute.params.subscribe(function (params) {
-            _this.userId = params['userId'];
             _this.websiteId = params['websiteId'];
             _this.pageId = params['pageId'];
         });
-        // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-        // this.page = this.pageService.findPageById(this.pageId);
-        this.pageName = this.page.name;
+        this.pageService.findPageByWebsiteId(this.websiteId).subscribe(function (res) { return _this.pages = res; });
+        this.pageService.findPageById(this.pageId).subscribe(function (res) { return _this.page = res; });
     };
-    PageEditComponent.prototype.jumpToEdit = function (pageId) {
+    PageEditComponent.prototype.updatePage = function () {
+        var _this = this;
+        this.pageService.updatePage(this.page._id, this.page).subscribe(function (res) {
+            _this.message = 'Page changes saved!';
+            _this.ngOnInit();
+        }, function (err) { return _this.message = 'Page changes failed!'; });
+    };
+    PageEditComponent.prototype.removePage = function () {
+        var _this = this;
+        this.pageService.removePage(this.page._id).subscribe(function (res) { return _this.router.navigate(['../']); });
+    };
+    PageEditComponent.prototype.editPage = function (pageId) {
         this.pageId = pageId;
         // this.page = this.pageService.findPageById(this.pageId);
-        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId]);
+        this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', pageId]);
+        this.ngOnInit();
     };
     PageEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -304,7 +322,8 @@ var PageEditComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_1__services_page_service_client__["a" /* PageService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__services_status_service_client__["a" /* StatusService */]])
     ], PageEditComponent);
     return PageEditComponent;
 }());
@@ -372,10 +391,11 @@ var PageListComponent = /** @class */ (function () {
         var _this = this;
         this.statusService.checkLoggedIn().subscribe(function (response) {
             _this.user = response;
-            _this.pageService.findPageByWebsiteId(_this.user._id).subscribe(function (res) { return _this.pages = res; });
         }, function (err) {
             _this.router.navigate(['/login']);
         });
+        this.activatedRoute.params.subscribe(function (params) { return _this.websiteId = params['websiteId']; });
+        this.pageService.findPageByWebsiteId(this.websiteId).subscribe(function (res) { return _this.pages = res; });
     };
     PageListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -417,7 +437,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/page/page-new/page-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-fixed-top navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"navbar-left navbar-brand pull-left\">\n        <a routerLink=\"../\">\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\n        </a>\n      </div>\n      <div class=\"navbar-header navbar-brand\">\n        Pages\n      </div>\n      <div class=\"navbar-right navbar-brand pull-right\">\n        <a routerLink=\"./\">\n          <span class=\"glyphicon glyphicon-plus\"></span>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        New Website\n      </div>\n      <a routerLink=\"../\" class=\"navbar-right navbar-brand pull-right\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n    <div *ngFor=\"let pa of pages\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', pa._id, 'page']\">\n            {{pa.name}}\n          </a>\n          <a [routerLink]=\"['../', pa._id]\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <label>Name</label>\n    <input class=\"form-control\" type=\"text\" placeholder=\"Name\">\n    <label>Description</label>\n    <textarea class=\"form-control\" type=\"text\" placeholder=\"Description\"></textarea>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../../\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-fixed-top navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"navbar-left navbar-brand pull-left\">\n        <a routerLink=\"../\">\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\n        </a>\n      </div>\n      <div class=\"navbar-header navbar-brand\">\n        Pages\n      </div>\n      <div class=\"navbar-right navbar-brand pull-right\">\n        <a routerLink=\"./\">\n          <span class=\"glyphicon glyphicon-plus\"></span>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        New Website\n      </div>\n      <a (click)=\"newPage()\" class=\"navbar-right navbar-brand pull-right\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n\n<div *ngIf=\"pages\" class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n    <div *ngFor=\"let pa of pages\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', pa._id, 'page']\">\n            {{pa.name}}\n          </a>\n          <a [routerLink]=\"['../', pa._id]\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <label>Name</label>\n    <input [(ngModel)]=\"page.name\" name=\"name\"\n           class=\"form-control\" type=\"text\" placeholder=\"{{page.name}}\">\n    <label>Description</label>\n    <textarea [(ngModel)]=\"page.description\" name=\"name\"\n              class=\"form-control\" type=\"text\" placeholder=\"{{page.description}}\"></textarea>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a *ngIf=\"user\" class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['/user', user._id]\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -429,6 +449,8 @@ module.exports = "<nav class=\"navbar navbar-fixed-top navbar-default\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_page_service_client__ = __webpack_require__("../../../../../src/app/services/page.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_page_client_model__ = __webpack_require__("../../../../../src/app/models/page.client.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_status_service_client__ = __webpack_require__("../../../../../src/app/services/status.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -441,20 +463,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var PageNewComponent = /** @class */ (function () {
-    function PageNewComponent(activatedRoute, pageService, router) {
+    function PageNewComponent(activatedRoute, pageService, router, statusService) {
         this.activatedRoute = activatedRoute;
         this.pageService = pageService;
         this.router = router;
+        this.statusService = statusService;
+        this.page = new __WEBPACK_IMPORTED_MODULE_3__models_page_client_model__["a" /* Page */]('');
     }
     PageNewComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.statusService.checkLoggedIn().subscribe(function (response) {
+            _this.user = response;
+        }, function (err) {
+            _this.router.navigate(['/login']);
+        });
         this.activatedRoute.params.subscribe(function (params) {
             _this.websiteId = params['websiteId'];
-            _this.pageId = params['pageId'];
         });
-        // this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
-        // this.page = this.pageService.findPageById(this.pageId);
+        this.pageService.findPageByWebsiteId(this.websiteId).subscribe(function (res) { return _this.pages = res; });
+    };
+    PageNewComponent.prototype.newPage = function () {
+        var _this = this;
+        this.pageService.createPage(this.websiteId, this.page).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website', _this.websiteId, 'page']); });
     };
     PageNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -464,7 +497,8 @@ var PageNewComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_1__services_page_service_client__["a" /* PageService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__services_status_service_client__["a" /* StatusService */]])
     ], PageNewComponent);
     return PageNewComponent;
 }());
@@ -835,7 +869,7 @@ var WebsiteEditComponent = /** @class */ (function () {
     };
     WebsiteEditComponent.prototype.removeWebsite = function () {
         var _this = this;
-        this.websiteService.removeWebsite(this.websiteId).subscribe(function (res) { return _this.router.navigate(['../']); });
+        this.websiteService.removeWebsite(this.websiteId).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website']); });
     };
     WebsiteEditComponent.prototype.editWebsite = function (websiteId) {
         this.router.navigate(['/user', this.user._id, 'website', websiteId]);
@@ -964,7 +998,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/website/website-new/website-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-fixed-top navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"navbar-left navbar-brand pull-left\">\n        <a routerLink=\"../\">\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\n        </a>\n      </div>\n      <div class=\"navbar-header navbar-brand\">\n        Websites\n      </div>\n      <div class=\"navbar-right navbar-brand pull-right\">\n        <a routerLink=\"./\">\n          <span class=\"glyphicon glyphicon-plus\"></span>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        New Website\n      </div>\n      <a (click)=\"newWebsite()\" class=\"navbar-right navbar-brand pull-right\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n<div *ngIf=\"websites\" class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n    <div *ngFor=\"let web of websites\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', web._id, 'page']\">\n            {{web.name}}\n          </a>\n          <a [routerLink]=\"['../', web._id]\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <label>Name</label>\n    <input [(ngModel)]=\"name\" class=\"form-control\" type=\"text\" placeholder=\"Name\">\n    <label>Description</label>\n    <textarea [(ngModel)]=\"description\" class=\"form-control\" type=\"text\" placeholder=\"Description\"></textarea>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../../\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-fixed-top navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"col-sm-4 hidden-xs\">\n      <div class=\"navbar-left navbar-brand pull-left\">\n        <a routerLink=\"../\">\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\n        </a>\n      </div>\n      <div class=\"navbar-header navbar-brand\">\n        Websites\n      </div>\n      <div class=\"navbar-right navbar-brand pull-right\">\n        <a routerLink=\"./\">\n          <span class=\"glyphicon glyphicon-plus\"></span>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"col-xs-12 col-sm-8\">\n      <div class=\"navbar-header navbar-brand\">\n        New Website\n      </div>\n      <a (click)=\"newWebsite()\" class=\"navbar-right navbar-brand pull-right\">\n        <span class=\"glyphicon glyphicon-ok pull-right\"></span>\n      </a>\n    </div>\n  </div>\n</nav>\n<div *ngIf=\"websites\" class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n    <div *ngFor=\"let web of websites\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', web._id, 'page']\">\n            {{web.name}}\n          </a>\n          <a [routerLink]=\"['../', web._id]\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"col-xs-12 col-sm-8\">\n    <label>Name</label>\n    <input [(ngModel)]=\"website.name\" class=\"form-control\" type=\"text\" placeholder=\"Name\">\n    <label>Description</label>\n    <textarea [(ngModel)]=\"website.description\" class=\"form-control\" type=\"text\" placeholder=\"Description\"></textarea>\n  </div>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" routerLink=\"../../\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -998,6 +1032,7 @@ var WebsiteNewComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.statusService = statusService;
+        this.website = new __WEBPACK_IMPORTED_MODULE_3__models_website_client_model__["a" /* Website */]('');
     }
     WebsiteNewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1010,8 +1045,7 @@ var WebsiteNewComponent = /** @class */ (function () {
     };
     WebsiteNewComponent.prototype.newWebsite = function () {
         var _this = this;
-        var newWebsite = new __WEBPACK_IMPORTED_MODULE_3__models_website_client_model__["a" /* Website */](this.name, this.description);
-        this.websiteService.createWebsite(this.user._id, newWebsite).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website']); }, function (err) { return console.log('error add website'); });
+        this.websiteService.createWebsite(this.user._id, this.website).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website']); }, function (err) { return console.log('error add website'); });
     };
     WebsiteNewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1439,6 +1473,25 @@ var WidgetListComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/page.client.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Page; });
+var Page = /** @class */ (function () {
+    function Page(name, _id, description, dateCreated) {
+        this.name = name;
+        this._id = _id;
+        this.description = description;
+        this.dateCreated = dateCreated;
+    }
+    return Page;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/user.client.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1523,7 +1576,7 @@ var PageService = /** @class */ (function () {
         return this.http.get(url);
     };
     PageService.prototype.findPageById = function (pageId) {
-        var url = '/api/page' + pageId;
+        var url = '/api/page/' + pageId;
         return this.http.get(url);
     };
     PageService.prototype.updatePage = function (pageId, page) {

@@ -12,27 +12,37 @@ import {User} from '../../../models/user.client.model';
 })
 export class PageNewComponent implements OnInit {
   user: User;
-  websiteId: string;
-  pageId: string;
   pages: Page[];
-  page: Page;
+  page: Page = new Page('');
+  websiteId: string;
+  name: string;
+  description: string;
   constructor(private activatedRoute: ActivatedRoute,
               private pageService: PageService,
               private router: Router,
-              private statusService: StatusService,
-              private pageService: PageService) { }
+              private statusService: StatusService) { }
 
   ngOnInit() {
     this.statusService.checkLoggedIn().subscribe(
       response => {
         this.user = response;
-        this.pageService.findPageByWebsiteId(this.user._id).subscribe(
-          res => this.pages = res
-        );
       },
       err => {
         this.router.navigate(['/login']);
       }
+    );
+    this.activatedRoute.params.subscribe(
+      params => {
+        this.websiteId = params['websiteId'];
+      }
+    );
+    this.pageService.findPageByWebsiteId(this.websiteId).subscribe(
+      res => this.pages = res
+    );
+  }
+  newPage() {
+    this.pageService.createPage(this.websiteId, this.page).subscribe(
+      res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page'])
     );
   }
 }

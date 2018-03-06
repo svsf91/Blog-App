@@ -16,22 +16,21 @@
       <div class="navbar-header navbar-brand">
         Edit Website
       </div>
-      <a class="navbar-right navbar-brand pull-right" routerLink="../">
+      <a class="navbar-right navbar-brand pull-right" (click)="updatePage()">
         <span class="glyphicon glyphicon-ok pull-right"></span>
       </a>
     </div>
   </div>
 </nav>
-<div class="container-fluid myBody">
+<div *ngIf="pages && page" class="container-fluid myBody">
   <div class="col-sm-4 hidden-xs">
-
     <div *ngFor="let pa of pages">
       <ul class="list-group">
         <li class="list-group-item">
           <a [routerLink]="['../', pa._id, 'widget']">
             {{pa.name}}
           </a>
-          <a (click)="jumpToEdit(pa._id)">
+          <a (click)="editPage(pa._id)">
             <span class="glyphicon glyphicon-cog pull-right"></span>
           </a>
         </li>
@@ -39,18 +38,24 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-8">
+    <div *ngIf="message" class="alert alert-info">
+      {{message}}
+    </div>
     <form>
       <label>Name</label>
-      <input class="form-control" type="text" placeholder="{{pageName}}">
+      <input [(ngModel)]="page.name" class="form-control"
+             type="text" name="name" placeholder="{{page.name}}">
       <label>Description</label>
-      <textarea class="form-control" type="text" placeholder="Description"></textarea>
-      <button routerLink="../" class="btn btn-danger btn-block">Delete</button>
+      <textarea [(ngModel)]="page.description" class="form-control"
+                type="text" name="description" placeholder="{{page.description}}"></textarea>
+      <button (click)="removePage()" class="btn btn-danger btn-block">Delete</button>
     </form>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" routerLink="../">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right"
+       [routerLink]="['/user', user._id]">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>
