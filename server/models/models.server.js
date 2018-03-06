@@ -2,7 +2,7 @@ module.exports = function() {
     var connectionString =  null;
 
     if (process.env.MONGODB_URI) {
-        connectionString = 'mongo ds257808.mlab.com:57808/heroku_jjwsf0d9 -u admin -p admin';
+        connectionString = 'mongodb://admin:admin@ds257808.mlab.com:57808/heroku_jjwsf0d9';
     }
     else {
         connectionString = 'mongodb://localhost:27017/blogApp';
