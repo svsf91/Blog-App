@@ -1326,7 +1326,7 @@ var YoutubeNewComponent = /** @class */ (function () {
         this.widgetService = widgetService;
         this.router = router;
         this.statusService = statusService;
-        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('');
+        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('', 560);
     }
     YoutubeNewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1653,7 +1653,9 @@ var WidgetListComponent = /** @class */ (function () {
         }, function (err) {
             _this.router.navigate(['/login']);
         });
-        this.widgetService.findWidgetsByPageId(this.pageId).subscribe(function (res) { return _this.widgets = res; });
+        this.widgetService.findWidgetsByPageId(this.pageId).subscribe(function (res) {
+            _this.widgets = res;
+        });
     };
     WidgetListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1695,7 +1697,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-list/youtube-view/youtube-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<iframe [width]=\"widget.width\" src=\"{{getYoutubeEmbedUrl(widget.url)}}\" frameborder=\"0\"\n        allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>\n"
+module.exports = "<iframe [width]=\"widget.width\" height=\"315\" [src]=\"getYoutubeEmbedUrl(widget.url)\" frameborder=\"0\"\n        allowfullscreen></iframe>\n"
 
 /***/ }),
 
@@ -1706,6 +1708,7 @@ module.exports = "<iframe [width]=\"widget.width\" src=\"{{getYoutubeEmbedUrl(wi
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YoutubeViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__ = __webpack_require__("../../../../../src/app/models/widget.client.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1717,8 +1720,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var YoutubeViewComponent = /** @class */ (function () {
-    function YoutubeViewComponent() {
+    function YoutubeViewComponent(sanitizer) {
+        this.sanitizer = sanitizer;
     }
     YoutubeViewComponent.prototype.ngOnInit = function () {
     };
@@ -1726,7 +1731,7 @@ var YoutubeViewComponent = /** @class */ (function () {
         var embedUrl = 'https://www.youtube.com/embed/';
         var linkUrlParts = linkUrl.split('/');
         embedUrl += linkUrlParts[linkUrlParts.length - 1];
-        return embedUrl;
+        return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -1738,7 +1743,7 @@ var YoutubeViewComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/widget/widget-list/youtube-view/youtube-view.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/widget/widget-list/youtube-view/youtube-view.component.css"), __webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* DomSanitizer */]])
     ], YoutubeViewComponent);
     return YoutubeViewComponent;
 }());
@@ -1817,8 +1822,9 @@ var Website = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Widget; });
 var Widget = /** @class */ (function () {
-    function Widget(name, formatted, rows, type, _page, text, placeholder, description, url, width, height, size, widgetClass, icon, deletable, dateCreated, _id) {
+    function Widget(name, width, formatted, rows, type, _page, text, placeholder, description, url, height, size, widgetClass, icon, deletable, dateCreated, _id) {
         this.name = name;
+        this.width = width;
         this.formatted = formatted;
         this.rows = rows;
         this.type = type;
@@ -1827,7 +1833,6 @@ var Widget = /** @class */ (function () {
         this.placeholder = placeholder;
         this.description = description;
         this.url = url;
-        this.width = width;
         this.height = height;
         this.size = size;
         this.widgetClass = widgetClass;

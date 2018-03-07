@@ -6,12 +6,12 @@ module.exports = function(mongoose){
         name : {type : String, required : true},
         title : String,
         description : String,
-        widgets : [String],
+        widgets : [{}],
         dateCreated : {
             type : Date,
             default: Date.now
         }
-    }, {collection : 'page'});
+    }, {collection : 'page', usePushEach: true});
 
    return pageSchema;
 };

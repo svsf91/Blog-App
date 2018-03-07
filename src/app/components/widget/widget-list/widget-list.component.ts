@@ -35,7 +35,9 @@ export class WidgetListComponent implements OnInit {
       }
     );
     this.widgetService.findWidgetsByPageId(this.pageId).subscribe(
-      res => this.widgets = res
+      res => {
+        this.widgets = res;
+      }
     );
   }
 }

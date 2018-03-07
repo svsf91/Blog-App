@@ -3,6 +3,7 @@ import {Page} from './page.client.model';
 export class Widget {
   constructor
   (public name: string,
+   public width?: number,
    public formatted?: boolean,
    public rows?: number,
    public type?: string,
@@ -11,7 +12,6 @@ export class Widget {
    public placeholder?: string,
    public description?: string,
    public url?: string,
-   public width?: string,
    public height?: string,
    public size?: number,
    public widgetClass?: string,

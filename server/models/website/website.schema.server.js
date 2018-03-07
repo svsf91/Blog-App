@@ -11,7 +11,7 @@ module.exports = function(mongoose){
             type : Date,
             default: Date.now
         }
-    }, {collection : 'website'});
+    }, {collection : 'website', usePushEach: true});
 
     return websiteSchema;
 };

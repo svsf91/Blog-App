@@ -21,7 +21,7 @@ module.exports = function(mongoose){
             type : Date,
             default: Date.now
         }
-    }, {collection : 'widget'});
+    }, {collection : 'widget', usePushEach: true});
 
    return widgetSchema;
 };

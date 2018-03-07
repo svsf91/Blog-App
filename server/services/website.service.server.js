@@ -23,7 +23,7 @@ module.exports = function (app, models) {
       .createWebsiteForUser(uid, website)
       .then(
         function (status) {
-          res.send(status);
+          res.send('');
         },
         function (error) {
           res.sendStatus(400).send(error);

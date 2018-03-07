@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Widget} from '../../../../models/widget.client.model';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-youtube-view',
@@ -8,7 +9,7 @@ import {Widget} from '../../../../models/widget.client.model';
 })
 export class YoutubeViewComponent implements OnInit {
   @Input() widget: Widget;
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -16,6 +17,6 @@ export class YoutubeViewComponent implements OnInit {
     let embedUrl = 'https://www.youtube.com/embed/';
     const linkUrlParts = linkUrl.split('/');
     embedUrl += linkUrlParts[linkUrlParts.length - 1];
-    return embedUrl;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 }

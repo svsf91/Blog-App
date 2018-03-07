@@ -1,4 +1,4 @@
-module.exports = function (mongoose, websiteModel) {
+module.exports = function (mongoose, websiteModel, widgetModel) {
   var pageSchema = require('./page.schema.server')(mongoose);
   var pageModel = mongoose.model('Page', pageSchema);
 
@@ -41,11 +41,11 @@ module.exports = function (mongoose, websiteModel) {
     });
   }
 
-  function insertWidgetToPage(pageId, widgetId) {
+  function insertWidgetToPage(pageId, widget) {
     pageModel
       .findById(pageId)
       .then(function (page) {
-        page.widgets.push(widgetId);
+        page.widgets.push(widget);
         page.save();
       });
   }

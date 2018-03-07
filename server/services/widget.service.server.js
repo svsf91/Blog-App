@@ -24,8 +24,6 @@ module.exports = function (app, models) {
   function createWidget(req, res) {
     var pid = req.params.pageId;
     var widget = req.body;
-    console.log('pid: ' + pid);
-    console.log('widget: ' + JSON.stringify(widget));
 
     models
       .widgetModel

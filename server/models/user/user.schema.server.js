@@ -18,7 +18,7 @@ module.exports = function(mongoose){
             id: String,
             token: String
         }
-    }, {collection: 'user'});
+    }, {collection: 'user', usePushEach: true});
 
     return userSchema;
 };
