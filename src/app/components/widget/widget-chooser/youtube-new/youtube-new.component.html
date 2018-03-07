@@ -8,32 +8,31 @@
     <div class="navbar-header navbar-brand">
       Youtube
     </div>
-    <div class="navbar-right navbar-brand pull-right">
-      <a routerLink="./">
-        <span class="glyphicon glyphicon-plus"></span>
-      </a>
-    </div>
   </div>
 </nav>
 
-<div class="container">
+<div class="container myBody">
   <form>
     <div class="form-group">
       <label for="youtube-name">Name</label>
-      <input [(ngModel)]="widget.name" type="text" class="form-control" id="youtube-name" placeholder="Name">
+      <input [(ngModel)]="widget.name" name="name" type="text"
+             class="form-control" id="youtube-name" placeholder="Name" required>
     </div>
     <div class="form-group">
       <label for="youtube-text">Text</label>
-      <input [(ngModel)]="widget.text" type="text" class="form-control" id="youtube-text" placeholder="Text">
+      <input [(ngModel)]="widget.text" name="text" type="text"
+             class="form-control" id="youtube-text" placeholder="Text">
     </div>
     <div class="form-group">
       <label for="youtube-url">URL</label>
-      <input [(ngModel)]="widget.url" type="text" class="form-control" id="youtube-url"
+      <input [(ngModel)]="widget.url" name="url" type="text"
+             class="form-control" id="youtube-url"
              placeholder="https://youtu.be/xxxxxx">
     </div>
     <div class="form-group">
       <label for="youtube-width">Width</label>
-      <input  [(ngModel)]="widget.width" type="text" class="form-control" id="youtube-width" placeholder="100%">
+      <input [(ngModel)]="widget.width" name="width" type="text"
+             class="form-control" id="youtube-width" placeholder="100%">
     </div>
     <a (click)="createWidget()" class="btn btn-primary btn-block" id="widget-youtube-create-btn">Create</a>
   </form>

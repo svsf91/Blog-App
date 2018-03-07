@@ -6,10 +6,7 @@ module.exports = function(mongoose){
         name : {type : String, required : true},
         title : String,
         description : String,
-        widgets : [{
-            type : Schema.Types.ObjectId,
-            ref : 'Widget'
-        }],
+        widgets : [String],
         dateCreated : {
             type : Date,
             default: Date.now

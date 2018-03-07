@@ -6,10 +6,7 @@ module.exports = function(mongoose){
         _user : {type : Schema.Types.ObjectId, ref : 'User'},
         name : {type : String, required : true},
         description : String,
-        pages : [{
-            type : Schema.Types.ObjectId,
-            ref : 'Page'
-        }],
+        pages : [String],
         dateCreated : {
             type : Date,
             default: Date.now

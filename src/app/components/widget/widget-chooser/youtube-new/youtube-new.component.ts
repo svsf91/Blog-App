@@ -12,7 +12,7 @@ import {User} from '../../../../models/user.client.model';
 })
 export class YoutubeNewComponent implements OnInit {
   user: User;
-  widget: Widget;
+  widget: Widget = new Widget('');
   websiteId: string;
   pageId: string;
   createError: string;
@@ -42,6 +42,7 @@ export class YoutubeNewComponent implements OnInit {
       this.createError = 'Url is required for Youtube';
       return;
     } else {
+      this.widget.type = 'YOUTUBE';
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', this.pageId, 'widget'])
       );

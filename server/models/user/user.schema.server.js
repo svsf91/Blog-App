@@ -9,10 +9,7 @@ module.exports = function(mongoose){
         lastName : String,
         email : String,
         phone : String,
-        websites : [{
-            type: Schema.Types.ObjectId,
-            ref : 'Website'
-        }],
+        websites : [String],
         dateCreated : {
             type : Date,
             default: Date.now

@@ -22,8 +22,6 @@ import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 import {HttpClientModule} from '@angular/common/http';
 import {StatusService} from './services/status.service.client';
-import { HtmlViewComponent } from './components/widget/widget-list/html-view/html-view.component';
-import { TextViewComponent } from './components/widget/widget-list/text-view/text-view.component';
 import { HeadingViewComponent } from './components/widget/widget-list/heading-view/heading-view.component';
 import { ImageViewComponent } from './components/widget/widget-list/image-view/image-view.component';
 import { YoutubeViewComponent } from './components/widget/widget-list/youtube-view/youtube-view.component';
@@ -46,8 +44,6 @@ import { YoutubeNewComponent } from './components/widget/widget-chooser/youtube-
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
-    HtmlViewComponent,
-    TextViewComponent,
     HeadingViewComponent,
     ImageViewComponent,
     YoutubeViewComponent,

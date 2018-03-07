@@ -11,14 +11,14 @@
     </a>
   </div>
 </nav>
-<div class="myBody">
+<div *ngIf="widgets" class="myBody">
   <div *ngFor="let wid of widgets">
     <div [ngSwitch]="wid.type">
       <div *ngSwitchCase="'HEADING'">
         Todo for Header
       </div>
       <div *ngSwitchCase="'YOUTUBE'">
-        <app-youtube-view></app-youtube-view>
+        <app-youtube-view [widget]="wid"></app-youtube-view>
       </div>
       <div *ngSwitchCase="'IMAGE'">
         Todo for Image
@@ -28,7 +28,7 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
+  <div *ngIf="user" class="container-fluid">
     <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user', userId]">
       <span class="glyphicon glyphicon-user"></span>
     </a>
