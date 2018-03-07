@@ -1,3 +1,52 @@
-<p>
-  image-new works!
-</p>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-left navbar-brand pull-left">
+      <a routerLink="../">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+    <div class="navbar-header navbar-brand">
+     Image
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="widget" class="container myBody">
+  <form>
+    <div class="form-group">
+      <label for="image-name">Name</label>
+      <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" id="image-name"
+             placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="image-text">Text</label>
+      <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="image-text"
+             placeholder="Text">
+    </div>
+    <div class="form-group">
+      <label for="image-url">URL</label>
+      <input [(ngModel)]="widget.url" name="url" type="text" class="form-control" id="image-url"
+             placeholder="http://www.example.com">
+    </div>
+    <div class="form-group">
+      <label for="image-width">Width</label>
+      <input [(ngModel)]="widget.width" name="width" type="text" class="form-control" id="image-width"
+             placeholder="100%">
+    </div>
+
+    <div>
+      <a (click)="createWidget()" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
+    </div>
+  </form>
+
+  <div *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</div>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

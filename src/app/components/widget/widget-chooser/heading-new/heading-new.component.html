@@ -1,3 +1,42 @@
-<p>
-  heading-new works!
-</p>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-left navbar-brand pull-left">
+      <a routerLink="../">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+    <div class="navbar-header navbar-brand">
+      Youtube
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="widget" class="container rt-form-top-padding myBody">
+    <form>
+        <div class="form-group">
+            <label for="heading-name">Name</label>
+            <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" id="heading-name"
+                   placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="heading-text">Text</label>
+            <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="heading-text"
+                   placeholder="Text">
+        </div>
+        <div class="form-group">
+            <label for="heading-size">Size</label>
+            <input [(ngModel)]="widget.size" name="size" type="number" class="form-control" id="heading-size"
+                   placeholder="Size">
+        </div>
+        <a (click)="createWidget(widget)" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
+    </form>
+    <div *ngIf="createError" class="alert alert-danger rt-alert-padding" role="alert">{{createError}}</div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

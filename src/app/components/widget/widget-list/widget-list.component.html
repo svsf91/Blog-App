@@ -18,13 +18,13 @@
     </a>
     <div [ngSwitch]="wid.type">
       <div *ngSwitchCase="'HEADING'">
-        Todo for Header
+        <app-heading-view [widget]="wid"></app-heading-view>
       </div>
       <div *ngSwitchCase="'YOUTUBE'">
         <app-youtube-view [widget]="wid"></app-youtube-view>
       </div>
       <div *ngSwitchCase="'IMAGE'">
-        Todo for Image
+        <app-image-view [widget]="wid"></app-image-view>
       </div>
     </div>
   </div>

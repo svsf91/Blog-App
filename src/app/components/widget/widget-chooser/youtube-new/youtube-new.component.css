@@ -6,7 +6,9 @@
 .navbar .glyphicon, .navbar .navbar-header {
   color: white;
 }
-
+.glyphicon {
+  color: black;
+}
 .myBody {
   margin-top: 80px;
   margin-bottom: 80px;

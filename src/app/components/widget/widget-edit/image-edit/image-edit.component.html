@@ -1,3 +1,27 @@
-<p>
-  image-edit works!
-</p>
+<div *ngIf="widget" class="container-fluid">
+  <form class="cl-form-bottom-padding">
+    <label for="name">Name</label>
+    <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" placeholder="Name" id="name" required>
+    <label for="text">Text</label>
+    <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="text" required>
+    <label for="url">URL</label>
+    <input [(ngModel)]="widget.url" name="url" type="text" class="form-control"
+           placeholder="https://xxxx.jpg"
+           id="url" required>
+    <label for="width">Width</label>
+    <input [(ngModel)]="widget.width" name="width" type="text" class="form-control" placeholder="100%" id="width"
+           required>
+  </form>
+
+  <a class="btn btn-info btn-block" routerLink="../search">
+    Search Flickr
+  </a>
+
+  <form (submit)="uploadImage()">
+    <input name="myFile" type="file" class="form-control"/>
+    <input name="width" placeholder="100%" class="form-control"/>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+  </form>
+
+  <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
+</div>

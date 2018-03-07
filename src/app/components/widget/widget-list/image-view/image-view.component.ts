@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Widget} from '../../../../models/widget.client.model';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-image-view',
@@ -8,9 +9,16 @@ import {Widget} from '../../../../models/widget.client.model';
 })
 export class ImageViewComponent implements OnInit {
   @Input() widget: Widget;
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private sanitizer: DomSanitizer) {
   }
 
+  ngOnInit() {
+    if (this.widget.width < 100)
+      this.widget.width = 560;
+  }
+
+  getImageUrl() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.widget.url);
+  }
 }

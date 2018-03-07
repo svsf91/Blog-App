@@ -31,6 +31,7 @@ import { YoutubeNewComponent } from './components/widget/widget-chooser/youtube-
 import { HeadingEditComponent } from './components/widget/widget-edit/heading-edit/heading-edit.component';
 import { ImageEditComponent } from './components/widget/widget-edit/image-edit/image-edit.component';
 import { YoutubeEditComponent } from './components/widget/widget-edit/youtube-edit/youtube-edit.component';
+import { WidgetFlickrSearchComponent } from './components/widget/widget-flickr-search/widget-flickr-search.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { YoutubeEditComponent } from './components/widget/widget-edit/youtube-ed
     HeadingEditComponent,
     ImageEditComponent,
     YoutubeEditComponent,
+    WidgetFlickrSearchComponent,
   ],
   imports: [
     BrowserModule,

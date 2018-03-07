@@ -1,0 +1,36 @@
+<nav class="navbar narbar-default navbar-fixed-top cl-blue-navbar">
+  <div class="container-fluid">
+    <a routerLink="../" class="navbar-link navbar-text pull-left cl-navbar-text cl-text-white">
+      <span class="glyphicon glyphicon-chevron-left "></span>
+    </a>
+    <a class="navbar-brand cl-navbar-text cl-text-white">
+      Search Flickr
+    </a>
+  </div>
+</nav>
+
+<div class="container-fluid myBody">
+  <div class="input-group">
+    <input [(ngModel)]="searchText" type="text" class="form-control">
+    <span class="input-group-btn">
+            <a (click)="searchPhotos()" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+  </div>
+
+  <div *ngIf="photos" class="row">
+    <div class="col-xs-4" *ngFor="let photo of photos.photo">
+      <img (click)="selectPhoto()"
+           [src]="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id+ '_' + photo.secret + '_m.jpg'"/>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div *ngIf="user" class="container-fuild">
+    <a [routerLink]="['/user', user._id]" class="navbar-link navbar-text pull-right cl-navbar-text cl-icon-padding cl-text-white">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+@import "../../../../../assets/vendors/bootstrap/dist/css/bootstrap.min.css";
+.navbar {
+  background-color: #337ab7;
+}
+
+.navbar .glyphicon, .navbar .navbar-header {
+  color: white;
+}
+.glyphicon {
+  color: black;
+}
+.myBody {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}

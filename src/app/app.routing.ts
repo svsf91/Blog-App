@@ -14,6 +14,7 @@ import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.c
 import {HeadingNewComponent} from './components/widget/widget-chooser/heading-new/heading-new.component';
 import {ImageNewComponent} from './components/widget/widget-chooser/image-new/image-new.component';
 import {YoutubeNewComponent} from './components/widget/widget-chooser/youtube-new/youtube-new.component';
+import {WidgetFlickrSearchComponent} from './components/widget/widget-flickr-search/widget-flickr-search.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,8 +31,8 @@ const appRoutes: Routes = [
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/heading', component: HeadingNewComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/image', component: ImageNewComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/youtube', component: YoutubeNewComponent },
+  { path: 'user/:userId/website/:websiteId/page/:pageId/widget/search', component: WidgetFlickrSearchComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', component: WidgetEditComponent },
-  // { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: '**', component: LoginComponent }
 ];
 
