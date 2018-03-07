@@ -1,14 +1,14 @@
-module.exports = function (mongoose, pageModel) {
+module.exports = function(mongoose, pageModel) {
   var widgetSchema = require('./widget.schema.server')(mongoose);
   var widgetModel = mongoose.model('Widget', widgetSchema);
 
   var api = {
-    'createWidgetForPage': createWidgetForPage,
-    'findAllWidgetsForPage': findAllWidgetsForPage,
-    'findWidgetById': findWidgetById,
-    'updateWidget': updateWidget,
-    'deleteWidget': deleteWidget,
-    'reorderWidgets': reorderWidgets,
+    'createWidgetForPage' : createWidgetForPage,
+    'findAllWidgetsForPage' : findAllWidgetsForPage,
+    'findWidgetById' : findWidgetById,
+    'updateWidget' : updateWidget,
+    'deleteWidget' : deleteWidget,
+    'reorderWidgets' : reorderWidgets
   };
 
   return api;
@@ -21,15 +21,15 @@ module.exports = function (mongoose, pageModel) {
       .then(
         function (widget) {
           pageModel
-            .insertWidgetToPage(widget._page, widget);
+            .insertWidgetToPage(widget._page, widget._id);
         });
   }
 
   function findAllWidgetsForPage(pageId) {
     return pageModel
       .findPageById(pageId)
-      // .populate('widgets')
-      // .exec()
+      .populate('widgets')
+      .exec()
       .then(function (page) {
         return page.widgets;
       });
@@ -41,7 +41,7 @@ module.exports = function (mongoose, pageModel) {
 
   function updateWidget(widgetId, widget) {
     return widgetModel.update({
-      _id: widgetId
+      _id : widgetId
     }, {
       type: widget.type,
       name: widget.name,
@@ -49,15 +49,15 @@ module.exports = function (mongoose, pageModel) {
       url: widget.url,
       width: widget.width,
       size: widget.size,
-      placeholder: widget.placeholder,
-      rows: widget.rows,
-      formatted: widget.formatted
+      placeholder : widget.placeholder,
+      rows : widget.rows,
+      formatted : widget.formatted
     });
   }
 
   function deleteWidget(widgetId) {
     return widgetModel.remove({
-      _id: widgetId
+      _id : widgetId
     });
   }
 
@@ -70,6 +70,4 @@ module.exports = function (mongoose, pageModel) {
           page.save();
         });
   }
-
-
 };

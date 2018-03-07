@@ -12,16 +12,9 @@
     <input [(ngModel)]="widget.width" name="width" type="text" class="form-control" placeholder="100%" id="width"
            required>
   </form>
-
-  <a class="btn btn-info btn-block" routerLink="../search">
-    Search Flickr
-  </a>
-
-  <form (submit)="uploadImage()">
-    <input name="myFile" type="file" class="form-control"/>
-    <input name="width" placeholder="100%" class="form-control"/>
-    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
-  </form>
-
+  <input name="myFile" type="file" class="form-control"/>
+  <input name="width" placeholder="100%" class="form-control"/>
+  <button type="submit" class="btn btn-block btn-warning">Upload Image</button>
+  <a class="btn btn-primary btn-block" (click)="updateWidget()">Update</a>
   <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
 </div>

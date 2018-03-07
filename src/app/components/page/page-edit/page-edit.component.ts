@@ -55,13 +55,13 @@ export class PageEditComponent implements OnInit {
   }
   removePage() {
     this.pageService.removePage(this.page._id).subscribe(
-      res => this.router.navigate(['../'])
+      res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page'])
     );
   }
   editPage(pageId) {
     this.pageId = pageId;
     // this.page = this.pageService.findPageById(this.pageId);
-    this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', pageId]);
+    this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page']);
     this.ngOnInit();
   }
 }

@@ -18,7 +18,6 @@ user: User;
   pageId: string;
   createError: string;
   searchText: string;
-  photo: any;
   photos = [];
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -46,19 +45,21 @@ user: User;
     this.flickrService.searchPhotos(this.searchText).subscribe(
       res => {
         let data = res;
-        data = data.replace('jsonFlickrApi', '');
-        data = data.substring(0, data.length - 1);
+        console.log(data);
+        data = data.substring(14, data.length - 1);
         this.photos = JSON.parse(data).photos;
       }
     );
   }
-  selectPhoto() {
-    let url = 'https://farm' + this.photo.farm + '.staticflickr.com/' + this.photo.server;
-    url += '/' + this.photo.id + '_' + this.photo.secret + '_b.jpg';
+  selectPhoto(photo) {
+    let url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server;
+    url += '/' + photo.id + '_' + photo.secret + '_b.jpg';
     this.widget.url = url;
+    this.widget.name = 'flickr' + Math.random();
+    this.widget.type = 'IMAGE';
     this.widget.rows = 0;
-    this.widgetService.updateWidget(this.widget._id, this.widget).subscribe(
-      res => this.router.navigate(['../'])
+    this.widgetService.createWidget(this.pageId, this.widget).subscribe(
+      res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', this.pageId, 'widget'])
     );
   }
 }

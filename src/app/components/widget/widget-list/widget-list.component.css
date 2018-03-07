@@ -25,3 +25,6 @@
   width: 50%;
 }
 
+.list-group-item {
+  border: 0px;
+}

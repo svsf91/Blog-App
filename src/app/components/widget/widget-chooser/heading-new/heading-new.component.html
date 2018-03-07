@@ -6,31 +6,32 @@
       </a>
     </div>
     <div class="navbar-header navbar-brand">
-      Youtube
+      Heading
     </div>
   </div>
 </nav>
 
 <div *ngIf="widget" class="container rt-form-top-padding myBody">
-    <form>
-        <div class="form-group">
-            <label for="heading-name">Name</label>
-            <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" id="heading-name"
-                   placeholder="Name">
-        </div>
-        <div class="form-group">
-            <label for="heading-text">Text</label>
-            <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="heading-text"
-                   placeholder="Text">
-        </div>
-        <div class="form-group">
-            <label for="heading-size">Size</label>
-            <input [(ngModel)]="widget.size" name="size" type="number" class="form-control" id="heading-size"
-                   placeholder="Size">
-        </div>
-        <a (click)="createWidget(widget)" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
-    </form>
-    <div *ngIf="createError" class="alert alert-danger rt-alert-padding" role="alert">{{createError}}</div>
+  <span *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</span>
+  <form>
+    <div class="form-group">
+      <label for="heading-name">Name</label>
+      <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" id="heading-name"
+             placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="heading-text">Text</label>
+      <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="heading-text"
+             placeholder="Text">
+    </div>
+    <div class="form-group">
+      <label for="heading-size">Size</label>
+      <input [(ngModel)]="widget.size" name="size" type="number" class="form-control" id="heading-size"
+             placeholder="Size">
+    </div>
+    <a (click)="createWidget(widget)" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
+  </form>
+  <div *ngIf="createError" class="alert alert-danger rt-alert-padding" role="alert">{{createError}}</div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

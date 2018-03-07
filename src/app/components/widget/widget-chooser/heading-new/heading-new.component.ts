@@ -46,6 +46,7 @@ export class HeadingNewComponent implements OnInit {
       return;
     } else {
       this.widget.type = 'HEADING';
+      this.widget.rows = 0;
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', this.pageId, 'widget'])
       );

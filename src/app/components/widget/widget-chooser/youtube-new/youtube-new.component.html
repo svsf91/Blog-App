@@ -12,6 +12,7 @@
 </nav>
 
 <div class="container myBody">
+  <span *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</span>>
   <form>
     <div class="form-group">
       <label for="youtube-name">Name</label>

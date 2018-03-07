@@ -12,7 +12,7 @@
   </div>
 </nav>
 <div *ngIf="widgets" class="myBody">
-  <div *ngFor="let wid of widgets">
+  <div *ngFor="let wid of widgets" class="list-group-item">
     <a [routerLink]="['./', wid._id]">
       <span class="glyphicon glyphicon-cog pull-right"></span>
     </a>

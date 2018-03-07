@@ -21,7 +21,7 @@
 
   <div *ngIf="photos" class="row">
     <div class="col-xs-4" *ngFor="let photo of photos.photo">
-      <img (click)="selectPhoto()"
+      <img (click)="selectPhoto(photo)"
            [src]="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id+ '_' + photo.secret + '_m.jpg'"/>
     </div>
   </div>

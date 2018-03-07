@@ -32,6 +32,7 @@ import { HeadingEditComponent } from './components/widget/widget-edit/heading-ed
 import { ImageEditComponent } from './components/widget/widget-edit/image-edit/image-edit.component';
 import { YoutubeEditComponent } from './components/widget/widget-edit/youtube-edit/youtube-edit.component';
 import { WidgetFlickrSearchComponent } from './components/widget/widget-flickr-search/widget-flickr-search.component';
+import {FlickrService} from './services/flickr.service.client';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { WidgetFlickrSearchComponent } from './components/widget/widget-flickr-s
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService, WebsiteService, PageService, WidgetService, StatusService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, StatusService, FlickrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

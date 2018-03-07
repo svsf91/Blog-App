@@ -5,9 +5,12 @@
     <label for="text">Text</label>
     <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" id="text" required>
     <label for="url">URL</label>
-    <input [(ngModel)]="widget.url" name="url" type="text" class="form-control" placeholder="https://youtu.be/xxxxxx" id="url" required>
+    <input [(ngModel)]="widget.url" name="url" type="text" class="form-control" placeholder="https://youtu.be/xxxxxx"
+           id="url" required>
     <label for="width">Width</label>
-    <input [(ngModel)]="widget.width" name="width" type="text" class="form-control" placeholder="100%" id="width" required>
+    <input [(ngModel)]="widget.width" name="width" type="text" class="form-control" placeholder="100%" id="width"
+           required>
   </form>
+  <a class="btn btn-primary btn-block" (click)="updateWidget()">Update</a>
   <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
 </div>

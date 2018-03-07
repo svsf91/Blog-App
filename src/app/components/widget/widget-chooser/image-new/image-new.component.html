@@ -6,12 +6,13 @@
       </a>
     </div>
     <div class="navbar-header navbar-brand">
-     Image
+      Image
     </div>
   </div>
 </nav>
 
 <div *ngIf="widget" class="container myBody">
+  <span *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</span>>
   <form>
     <div class="form-group">
       <label for="image-name">Name</label>
@@ -34,12 +35,12 @@
              placeholder="100%">
     </div>
 
-    <div>
-      <a (click)="createWidget()" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
-    </div>
+    <a class="btn btn-info btn-block" routerLink="../search">
+      Search Flickr
+    </a>
+    <a (click)="createWidget()" class="btn btn-primary btn-block" id="widget-heading-create-btn">Create</a>
   </form>
 
-  <div *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</div>
 
 </div>
 

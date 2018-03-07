@@ -1,11 +1,16 @@
 <div *ngIf="widget" class="container-fluid">
-    <form class="cl-form-bottom-padding">
-        <label for="heading-name">Name</label>
-        <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" placeholder="Name" id="heading-name" required>
-        <label for="heading-text">Text</label>
-        <input [(ngModel)]="widget.text" name="text" type="text" class="form-control" placeholder="Juicero shows what’s wrong with Silicon Valley thinking" id="heading-text" required>
-        <label for="heading-size">Size</label>
-        <input [(ngModel)]="widget.size" name="size" type="text" class="form-control" placeholder="3" id="heading-size" required>
-    </form>
-    <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
+  <form class="cl-form-bottom-padding">
+    <label for="heading-name">Name</label>
+    <input [(ngModel)]="widget.name" name="name" type="text" class="form-control" placeholder="Name" id="heading-name"
+           required>
+    <label for="heading-text">Text</label>
+    <input [(ngModel)]="widget.text" name="text" type="text" class="form-control"
+           placeholder="Juicero shows what’s wrong with Silicon Valley thinking" id="heading-text" required>
+    <label for="heading-size">Size</label>
+    <input [(ngModel)]="widget.size" name="size" type="text" class="form-control" placeholder="3" id="heading-size"
+           required>
+  </form>
+
+  <a class="btn btn-primary btn-block" (click)="updateWidget()">Update</a>
+  <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
 </div>
