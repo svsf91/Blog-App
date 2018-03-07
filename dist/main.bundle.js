@@ -240,7 +240,8 @@ var appRoutes = [
     { path: 'user/:userId/website/:websiteId/page/:pageId/widget/image', component: __WEBPACK_IMPORTED_MODULE_14__components_widget_widget_chooser_image_new_image_new_component__["a" /* ImageNewComponent */] },
     { path: 'user/:userId/website/:websiteId/page/:pageId/widget/youtube', component: __WEBPACK_IMPORTED_MODULE_15__components_widget_widget_chooser_youtube_new_youtube_new_component__["a" /* YoutubeNewComponent */] },
     { path: 'user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', component: __WEBPACK_IMPORTED_MODULE_12__components_widget_widget_edit_widget_edit_component__["a" /* WidgetEditComponent */] },
-    { path: '', pathMatch: 'full', redirectTo: 'login' }
+    // { path: '', pathMatch: 'full', redirectTo: 'login'},
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_1__components_user_login_login_component__["a" /* LoginComponent */] }
 ];
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(appRoutes);
 
@@ -698,7 +699,7 @@ var ProfileComponent = /** @class */ (function () {
     };
     ProfileComponent.prototype.logout = function () {
         var _this = this;
-        this.userService.logout().subscribe(function (res) { return _this.router.navigate(['/login']); }, function (err) { return _this.message = 'Failed to delete'; });
+        this.userService.logout().subscribe(function (res) { return _this.router.navigate(['/login']); });
     };
     ProfileComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

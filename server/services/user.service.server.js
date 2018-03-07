@@ -174,7 +174,7 @@ module.exports = function (app, models) {
 
   function logout(req, res) {
     req.logout();
-    res.sendStatus(200);
+    res.send('');
   }
 
   //API

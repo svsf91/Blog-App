@@ -31,7 +31,8 @@ const appRoutes: Routes = [
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/image', component: ImageNewComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/youtube', component: YoutubeNewComponent },
   { path: 'user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', component: WidgetEditComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'login'}
+  // { path: '', pathMatch: 'full', redirectTo: 'login'},
+  { path: '**', component: LoginComponent }
 ];
 
 export const Routing = RouterModule.forRoot(appRoutes);

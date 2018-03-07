@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     this.userService.logout().subscribe(
-      res => this.router.navigate(['/login']),
-      err => this.message = 'Failed to delete');
+      res => this.router.navigate(['/login'])
+    );
   }
 }

@@ -4,4 +4,5 @@ module.exports = function(app){
   require("./services/website.service.server.js")(app, models);
   require("./services/page.service.server")(app, models);
   require("./services/widget.service.server")(app, models);
+
 };
