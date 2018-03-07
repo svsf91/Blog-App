@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5e5fa8f5-621e-4cc2-9745-5485505d598b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dist/3rdpartylicenses.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/inline.dd423d9f1b8870fdb8f2.bundle.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/main.60c3b640c44556df5e41.bundle.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/polyfills.f20484b2fa4642e0dca8.bundle.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dist/styles.9c0ad738f18adc3d19ed.bundle.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/server/services/user.service.server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -56,8 +50,8 @@
       <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/services/user.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="72" column="100" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="101" />
+            <state relative-caret-position="472">
+              <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -88,7 +82,7 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="94">
               <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding />
             </state>
@@ -389,12 +383,12 @@
       <workItem from="1520383401144" duration="10550000" />
       <workItem from="1520399405000" duration="6363000" />
       <workItem from="1520407726500" duration="15287000" />
-      <workItem from="1520452790594" duration="1474000" />
+      <workItem from="1520452790594" duration="2471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131143000" />
+    <option name="totallyTimeSpent" value="132140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
@@ -858,7 +852,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="94">
           <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding />
         </state>
@@ -866,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/services/user.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="72" column="100" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="101" />
+        <state relative-caret-position="472">
+          <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
           <folding />
         </state>
       </provider>
