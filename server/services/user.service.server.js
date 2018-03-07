@@ -56,21 +56,21 @@ module.exports = function (app, models) {
   app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/assignment/#!/profile',
-    failureRedirect: '/assignment/#!/login'
+    successRedirect: '/dist/index.html',
+    failureRedirect: '/dist/index.html'
   }));
 
 
   //FacebookStrategy
   var facebookConfig = {
-    clientID: process.env.FACEBOOK_CLIENT_ID || '1059354044195438',
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET || '97cc4ede7414cc8a5f08856748059e43',
+    clientID: process.env.FACEBOOK_CLIENT_ID || '559131524442517',
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET || '596a598cee336efa6908cbac1bb4b75e',
 
     //Use for local:
-    // callbackURL  : process.env.FACEBOOK_CALLBACK_URL || 'http://localhost:5000/auth/facebook/callback'
+    //callbackURL  : process.env.FACEBOOK_CALLBACK_URL || 'http://localhost:3000/auth/facebook/callback'
 
     //Use for heroku:
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL || 'http://webdev-luyingmin-cs5610.herokuapp.com/auth/facebook/callback'
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL || 'https://serene-fortress-94809.herokuapp.com/auth/facebook/callback'
   };
 
   passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
