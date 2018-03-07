@@ -28,6 +28,9 @@ import { YoutubeViewComponent } from './components/widget/widget-list/youtube-vi
 import { HeadingNewComponent } from './components/widget/widget-chooser/heading-new/heading-new.component';
 import { ImageNewComponent } from './components/widget/widget-chooser/image-new/image-new.component';
 import { YoutubeNewComponent } from './components/widget/widget-chooser/youtube-new/youtube-new.component';
+import { HeadingEditComponent } from './components/widget/widget-edit/heading-edit/heading-edit.component';
+import { ImageEditComponent } from './components/widget/widget-edit/image-edit/image-edit.component';
+import { YoutubeEditComponent } from './components/widget/widget-edit/youtube-edit/youtube-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { YoutubeNewComponent } from './components/widget/widget-chooser/youtube-
     HeadingNewComponent,
     ImageNewComponent,
     YoutubeNewComponent,
+    HeadingEditComponent,
+    ImageEditComponent,
+    YoutubeEditComponent,
   ],
   imports: [
     BrowserModule,

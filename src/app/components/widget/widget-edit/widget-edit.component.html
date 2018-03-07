@@ -1,59 +1,34 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3">
-        <a class="navbar-left navbar-brand pull-left" [routerLink]="['../']">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <div class="navbar-header navbar-brand hidden-xs">
-          Choose Widget
-        </div>
-      </div>
-
-      <div class="col-sm-9">
-        <div class="navbar-header navbar-brand">
-          Widget Edit
-        </div>
-        <a class="navbar-right navbar-brand pull-right" [routerLink]="['../']">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-      </div>
+    <a class="navbar-left navbar-brand pull-left" [routerLink]="['../']">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <div class="navbar-header navbar-brand">
+      Widget Edit
     </div>
+    <a class="navbar-right navbar-brand pull-right" [routerLink]="['../']">
+      <span class="glyphicon glyphicon-ok"></span>
+    </a>
   </div>
 </nav>
 
-<div class="container-fluid myBody">
-  <div class="col-sm-4 hidden-xs">
-
-    <div *ngFor="let wid of widgets">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a [routerLink]="['../', wid._id]">
-            {{wid.type}}
-          </a>
-          <a (click)="jumpToEdit(wid._id)">
-            <span class="glyphicon glyphicon-cog pull-right"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<div *ngIf="widget" class="container-fluid myBody">
   <div [ngSwitch]="widget.type">
     <div *ngSwitchCase="'HEADING'">
-
+      <app-heading-edit [widget]="widget"></app-heading-edit>
     </div>
     <div *ngSwitchCase="'IMAGE'">
-
+      <app-image-edit [widget]="widget"></app-image-edit>
     </div>
     <div *ngSwitchCase="'YOUTUBE'">
-
+      <app-youtube-edit [widget]="widget"></app-youtube-edit>
     </div>
   </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user/123']">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>

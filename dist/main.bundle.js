@@ -108,12 +108,18 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_widget_widget_chooser_heading_new_heading_new_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-chooser/heading-new/heading-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_widget_widget_chooser_image_new_image_new_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-chooser/image-new/image-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_widget_widget_chooser_youtube_new_youtube_new_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-chooser/youtube-new/youtube-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_widget_widget_edit_heading_edit_heading_edit_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_widget_widget_edit_image_edit_image_edit_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_widget_widget_edit_youtube_edit_youtube_edit_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -168,6 +174,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_26__components_widget_widget_chooser_heading_new_heading_new_component__["a" /* HeadingNewComponent */],
                 __WEBPACK_IMPORTED_MODULE_27__components_widget_widget_chooser_image_new_image_new_component__["a" /* ImageNewComponent */],
                 __WEBPACK_IMPORTED_MODULE_28__components_widget_widget_chooser_youtube_new_youtube_new_component__["a" /* YoutubeNewComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_widget_widget_edit_heading_edit_heading_edit_component__["a" /* HeadingEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_widget_widget_edit_image_edit_image_edit_component__["a" /* ImageEditComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__components_widget_widget_edit_youtube_edit_youtube_edit_component__["a" /* YoutubeEditComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1370,6 +1379,140 @@ var YoutubeNewComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  heading-edit works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeadingEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__ = __webpack_require__("../../../../../src/app/models/widget.client.model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HeadingEditComponent = /** @class */ (function () {
+    function HeadingEditComponent() {
+    }
+    HeadingEditComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */])
+    ], HeadingEditComponent.prototype, "widget", void 0);
+    HeadingEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-heading-edit',
+            template: __webpack_require__("../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/widget/widget-edit/heading-edit/heading-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HeadingEditComponent);
+    return HeadingEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  image-edit works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__ = __webpack_require__("../../../../../src/app/models/widget.client.model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ImageEditComponent = /** @class */ (function () {
+    function ImageEditComponent() {
+    }
+    ImageEditComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */])
+    ], ImageEditComponent.prototype, "widget", void 0);
+    ImageEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-image-edit',
+            template: __webpack_require__("../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/widget/widget-edit/image-edit/image-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ImageEditComponent);
+    return ImageEditComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/widget/widget-edit/widget-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1392,7 +1535,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-edit/widget-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-sm-3\">\n        <a class=\"navbar-left navbar-brand pull-left\" [routerLink]=\"['../']\">\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\n        </a>\n        <div class=\"navbar-header navbar-brand hidden-xs\">\n          Choose Widget\n        </div>\n      </div>\n\n      <div class=\"col-sm-9\">\n        <div class=\"navbar-header navbar-brand\">\n          Widget Edit\n        </div>\n        <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['../']\">\n          <span class=\"glyphicon glyphicon-ok\"></span>\n        </a>\n      </div>\n    </div>\n  </div>\n</nav>\n\n<div class=\"container-fluid myBody\">\n  <div class=\"col-sm-4 hidden-xs\">\n\n    <div *ngFor=\"let wid of widgets\">\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">\n          <a [routerLink]=\"['../', wid._id]\">\n            {{wid.type}}\n          </a>\n          <a (click)=\"jumpToEdit(wid._id)\">\n            <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div [ngSwitch]=\"widget.type\">\n    <div *ngSwitchCase=\"'HEADING'\">\n\n    </div>\n    <div *ngSwitchCase=\"'IMAGE'\">\n\n    </div>\n    <div *ngSwitchCase=\"'YOUTUBE'\">\n\n    </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['/user/123']\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-left navbar-brand pull-left\" [routerLink]=\"['../']\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n    </a>\n    <div class=\"navbar-header navbar-brand\">\n      Widget Edit\n    </div>\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['../']\">\n      <span class=\"glyphicon glyphicon-ok\"></span>\n    </a>\n  </div>\n</nav>\n\n<div *ngIf=\"widget\" class=\"container-fluid myBody\">\n  <div [ngSwitch]=\"widget.type\">\n    <div *ngSwitchCase=\"'HEADING'\">\n      <app-heading-edit [widget]=\"widget\"></app-heading-edit>\n    </div>\n    <div *ngSwitchCase=\"'IMAGE'\">\n      <app-image-edit [widget]=\"widget\"></app-image-edit>\n    </div>\n    <div *ngSwitchCase=\"'YOUTUBE'\">\n      <app-youtube-edit [widget]=\"widget\"></app-youtube-edit>\n    </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <a *ngIf=\"user\" class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['/user', user._id]\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1404,6 +1547,7 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_widget_service_client__ = __webpack_require__("../../../../../src/app/services/widget.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_status_service_client__ = __webpack_require__("../../../../../src/app/services/status.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1416,27 +1560,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var WidgetEditComponent = /** @class */ (function () {
-    function WidgetEditComponent(widgetService, activatedRoute, router) {
+    function WidgetEditComponent(widgetService, activatedRoute, router, statusService) {
         this.widgetService = widgetService;
         this.activatedRoute = activatedRoute;
         this.router = router;
+        this.statusService = statusService;
     }
     WidgetEditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             _this.widgetId = params['widgetId'];
-            _this.websiteId = params['websiteId'];
-            _this.userId = params['userId'];
-            _this.pageId = params['pageId'];
         });
-        // this.widget = this.widgetService.findWidgetById(this.widgetId);
-        // this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
-    };
-    WidgetEditComponent.prototype.jumpToEdit = function (widgetId) {
-        this.widgetId = widgetId;
-        // this.widget = this.widgetService.findWidgetById(this.widgetId);
-        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget', this.widgetId]);
+        this.statusService.checkLoggedIn().subscribe(function (response) {
+            _this.user = response;
+        }, function (err) {
+            _this.router.navigate(['/login']);
+        });
+        this.widgetService.findWidgetById(this.widgetId).subscribe(function (res) { return _this.widget = res; });
     };
     WidgetEditComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1446,9 +1588,79 @@ var WidgetEditComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_widget_service_client__["a" /* WidgetService */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__services_status_service_client__["a" /* StatusService */]])
     ], WidgetEditComponent);
     return WidgetEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <form class=\"cl-form-bottom-padding\">\n    <label for=\"name\">Name</label>\n    <input [(ngModel)]=\"widget.name\" name=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Name\" id=\"name\" required>\n    <label for=\"text\">Text</label>\n    <input [(ngModel)]=\"widget.text\" name=\"text\" type=\"text\" class=\"form-control\" id=\"text\" required>\n    <label for=\"url\">URL</label>\n    <input [(ngModel)]=\"widget.url\" name=\"url\" type=\"text\" class=\"form-control\" placeholder=\"https://youtu.be/xxxxxx\" id=\"url\" required>\n    <label for=\"width\">Width</label>\n    <input [(ngModel)]=\"widget.width\" name=\"width\" type=\"text\" class=\"form-control\" placeholder=\"100%\" id=\"width\" required>\n  </form>\n  <a class=\"btn btn-danger btn-block\" (click)=\"model.deleteWidget()\">Delete</a>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YoutubeEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__ = __webpack_require__("../../../../../src/app/models/widget.client.model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var YoutubeEditComponent = /** @class */ (function () {
+    function YoutubeEditComponent() {
+    }
+    YoutubeEditComponent.prototype.ngOnInit = function () {
+    };
+    YoutubeEditComponent.prototype.updateWidget = function () {
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */])
+    ], YoutubeEditComponent.prototype, "widget", void 0);
+    YoutubeEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-youtube-edit',
+            template: __webpack_require__("../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/widget/widget-edit/youtube-edit/youtube-edit.component.css"), __webpack_require__("../../../../../src/app/app.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], YoutubeEditComponent);
+    return YoutubeEditComponent;
 }());
 
 
@@ -1613,7 +1825,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/widget/widget-list/widget-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-left navbar-brand pull-left\" [routerLink]=\"['../']\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n    </a>\n    <div class=\"navbar-header navbar-brand\">\n      Widgets\n    </div>\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['./', 'new']\">\n      <span class=\"glyphicon glyphicon-plus\"></span>\n    </a>\n  </div>\n</nav>\n<div *ngIf=\"widgets\" class=\"myBody\">\n  <div *ngFor=\"let wid of widgets\">\n    <div [ngSwitch]=\"wid.type\">\n      <div *ngSwitchCase=\"'HEADING'\">\n        Todo for Header\n      </div>\n      <div *ngSwitchCase=\"'YOUTUBE'\">\n        <app-youtube-view [widget]=\"wid\"></app-youtube-view>\n      </div>\n      <div *ngSwitchCase=\"'IMAGE'\">\n        Todo for Image\n      </div>\n    </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div *ngIf=\"user\" class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['/user', userId]\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-left navbar-brand pull-left\" [routerLink]=\"['../']\">\n      <span class=\"glyphicon glyphicon-chevron-left\"></span>\n    </a>\n    <div class=\"navbar-header navbar-brand\">\n      Widgets\n    </div>\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['./', 'new']\">\n      <span class=\"glyphicon glyphicon-plus\"></span>\n    </a>\n  </div>\n</nav>\n<div *ngIf=\"widgets\" class=\"myBody\">\n  <div *ngFor=\"let wid of widgets\">\n    <a [routerLink]=\"['./', wid._id]\">\n      <span class=\"glyphicon glyphicon-cog pull-right\"></span>\n    </a>\n    <div [ngSwitch]=\"wid.type\">\n      <div *ngSwitchCase=\"'HEADING'\">\n        Todo for Header\n      </div>\n      <div *ngSwitchCase=\"'YOUTUBE'\">\n        <app-youtube-view [widget]=\"wid\"></app-youtube-view>\n      </div>\n      <div *ngSwitchCase=\"'IMAGE'\">\n        Todo for Image\n      </div>\n    </div>\n  </div>\n</div>\n\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div *ngIf=\"user\" class=\"container-fluid\">\n    <a class=\"navbar-right navbar-brand pull-right\" [routerLink]=\"['/user', userId]\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 

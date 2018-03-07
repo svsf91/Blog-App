@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Widget} from '../../../models/widget.client.model';
+import {StatusService} from '../../../services/status.service.client';
+import {User} from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-widget-edit',
@@ -9,31 +11,29 @@ import {Widget} from '../../../models/widget.client.model';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
+  user: User;
   widgetId: string;
-  userId: string;
-  websiteId: string;
-  pageId: string;
-  widgetName: string;
   widget: Widget;
-  widgets: Widget[];
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private statusService: StatusService) { }
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.widgetId = params['widgetId'];
-        this.websiteId = params['websiteId'];
-        this.userId = params['userId'];
-        this.pageId = params['pageId'];
       }
     );
-    // this.widget = this.widgetService.findWidgetById(this.widgetId);
-    // this.widgets = this.widgetService.findWidgetByPageId(this.pageId);
-  }
-  jumpToEdit(widgetId) {
-    this.widgetId = widgetId;
-    // this.widget = this.widgetService.findWidgetById(this.widgetId);
-    this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget', this.widgetId]);
+    this.statusService.checkLoggedIn().subscribe(
+      response => {
+        this.user = response;
+      },
+      err => {
+        this.router.navigate(['/login']);
+      }
+    );
+    this.widgetService.findWidgetById(this.widgetId).subscribe(
+      res => this.widget = res
+    );
   }
 }
