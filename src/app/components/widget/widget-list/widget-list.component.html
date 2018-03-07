@@ -13,12 +13,12 @@
 </nav>
 <div class="myBody">
   <div *ngFor="let wid of widgets">
-    <div [ngSwitch]="wid.widgetType">
+    <div [ngSwitch]="wid.type">
       <div *ngSwitchCase="'HEADING'">
         Todo for Header
       </div>
       <div *ngSwitchCase="'YOUTUBE'">
-        Todo for Youtube
+        <app-youtube-view></app-youtube-view>
       </div>
       <div *ngSwitchCase="'IMAGE'">
         Todo for Image

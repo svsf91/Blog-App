@@ -6,7 +6,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { Routing } from './app.routing';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { WebsiteEditComponent } from './components/website/website-edit/website-edit.component';
 import { WebsiteListComponent } from './components/website/website-list/website-list.component';
 import { WebsiteNewComponent } from './components/website/website-new/website-new.component';
@@ -20,11 +20,16 @@ import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
-import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
-import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import {HttpClientModule} from '@angular/common/http';
 import {StatusService} from './services/status.service.client';
+import { HtmlViewComponent } from './components/widget/widget-list/html-view/html-view.component';
+import { TextViewComponent } from './components/widget/widget-list/text-view/text-view.component';
+import { HeadingViewComponent } from './components/widget/widget-list/heading-view/heading-view.component';
+import { ImageViewComponent } from './components/widget/widget-list/image-view/image-view.component';
+import { YoutubeViewComponent } from './components/widget/widget-list/youtube-view/youtube-view.component';
+import { HeadingNewComponent } from './components/widget/widget-chooser/heading-new/heading-new.component';
+import { ImageNewComponent } from './components/widget/widget-chooser/image-new/image-new.component';
+import { YoutubeNewComponent } from './components/widget/widget-chooser/youtube-new/youtube-new.component';
 
 @NgModule({
   declarations: [
@@ -41,15 +46,21 @@ import {StatusService} from './services/status.service.client';
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
-    WidgetHeaderComponent,
-    WidgetImageComponent,
-    WidgetYoutubeComponent,
+    HtmlViewComponent,
+    TextViewComponent,
+    HeadingViewComponent,
+    ImageViewComponent,
+    YoutubeViewComponent,
+    HeadingNewComponent,
+    ImageNewComponent,
+    YoutubeNewComponent,
   ],
   imports: [
     BrowserModule,
     Routing,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [UserService, WebsiteService, PageService, WidgetService, StatusService],
   bootstrap: [AppComponent]

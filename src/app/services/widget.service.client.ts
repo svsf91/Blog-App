@@ -101,27 +101,27 @@ export class WidgetService {
    */
   createWidget(pageId: string, widget) {
     const url = '/api/page/' + pageId + '/widget';
-    return this.http.post(url, widget);
+    return this.http.post<Widget>(url, widget);
   }
 
   findWidgetsByPageId(pageId) {
     const url = '/api/page/' + pageId + '/widget';
-    return this.http.get(url);
+    return this.http.get<Widget[]>(url);
   }
 
   findWidgetById(widgetId: string) {
     const url = '/api/widget/' + widgetId;
-    return this.http.get(url);
+    return this.http.get<Widget>(url);
   }
 
   updateWidget(widgetId: string, widget) {
     const url = '/api/widget/' + widgetId;
-    return this.http.put(url, widget);
+    return this.http.put<Widget>(url, widget);
   }
 
   deleteWidget(widgetId) {
     const url = '/api/widget/' + widgetId;
-    return this.http.delete(url);
+    return this.http.delete<Widget>(url);
   }
 
   deleteWidgetsByPage(pageId) {
@@ -137,6 +137,6 @@ export class WidgetService {
 
   reorderWidgets(pageId, start, end) {
     const url = '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + end;
-    return this.http.put(url, '');
+    return this.http.put<Widget>(url, '');
   }
 }

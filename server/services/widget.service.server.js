@@ -77,7 +77,7 @@ module.exports = function (app, models) {
       .updateWidget(wgid, widget)
       .then(
         function (widget) {
-          res.sendStatus(200);
+          res.send('');
         },
         function (error) {
           res.sendStatus(400).send(error);
@@ -92,7 +92,7 @@ module.exports = function (app, models) {
       .deleteWidget(wgid)
       .then(
         function (status) {
-          res.sendStatus(200);
+          res.send('');
         },
         function (error) {
           res.sendStatus(400).send(error);
@@ -109,7 +109,7 @@ module.exports = function (app, models) {
       .reorderWidgets(pageId, start, end)
       .then(
         function (status) {
-          res.send(status);
+          res.send('');
         },
         function (error) {
           res.sendStatus(400).send("Cannot reorder widgets");

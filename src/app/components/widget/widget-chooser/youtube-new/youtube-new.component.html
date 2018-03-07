@@ -1,0 +1,48 @@
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-left navbar-brand pull-left">
+      <a routerLink="../">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+    <div class="navbar-header navbar-brand">
+      Youtube
+    </div>
+    <div class="navbar-right navbar-brand pull-right">
+      <a routerLink="./">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="youtube-name">Name</label>
+      <input [(ngModel)]="widget.name" type="text" class="form-control" id="youtube-name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="youtube-text">Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" id="youtube-text" placeholder="Text">
+    </div>
+    <div class="form-group">
+      <label for="youtube-url">URL</label>
+      <input [(ngModel)]="widget.url" type="text" class="form-control" id="youtube-url"
+             placeholder="https://youtu.be/xxxxxx">
+    </div>
+    <div class="form-group">
+      <label for="youtube-width">Width</label>
+      <input  [(ngModel)]="widget.width" type="text" class="form-control" id="youtube-width" placeholder="100%">
+    </div>
+    <a (click)="createWidget()" class="btn btn-primary btn-block" id="widget-youtube-create-btn">Create</a>
+  </form>
+  <div *ngIf="createError" class="alert alert-danger" role="alert">{{createError}}</div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>

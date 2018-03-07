@@ -29,7 +29,7 @@
       <ul class="list-group">
         <li class="list-group-item">
           <a [routerLink]="['../', wid._id]">
-            {{wid.widgetType}}
+            {{wid.type}}
           </a>
           <a (click)="jumpToEdit(wid._id)">
             <span class="glyphicon glyphicon-cog pull-right"></span>
@@ -38,15 +38,15 @@
       </ul>
     </div>
   </div>
-  <div [ngSwitch]="widget.widgetType">
+  <div [ngSwitch]="widget.type">
     <div *ngSwitchCase="'HEADING'">
-      <app-widget-header></app-widget-header>
+
     </div>
     <div *ngSwitchCase="'IMAGE'">
-      <app-widget-image></app-widget-image>
+
     </div>
     <div *ngSwitchCase="'YOUTUBE'">
-      <app-widget-youtube></app-widget-youtube>
+
     </div>
   </div>
 </div>
