@@ -11,3 +11,9 @@
   margin-top: 80px;
   margin-bottom: 80px;
 }
+.cl-text {
+  line-height: 1.6;
+  font-family: "Courier New", Monospaced;
+  font-style: oblique;
+  text-align: justify;
+}
