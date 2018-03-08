@@ -19,6 +19,7 @@ import {WidgetFlickrSearchComponent} from './components/widget/widget-flickr-sea
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'user', component: ProfileComponent },
   { path: 'user/:userId', component: ProfileComponent },
   { path: 'user/:userId/website', component: WebsiteListComponent },
   { path: 'user/:userId/website/new', component: WebsiteNewComponent },

@@ -28,7 +28,7 @@
   <label>Last Name</label>
   <input [(ngModel)]="user.lastName" class="form-control" type="text"
          id="last-name" placeholder="{{user.lastName}}">
-  <a routerLink="./website" class="btn btn-primary btn-block">Website</a>
+  <a [routerLink]="['/user', user._id, 'website']" class="btn btn-primary btn-block">Website</a>
   <a (click)="removeUser()" class="btn btn-warning btn-block">Delete User</a>
   <a (click)="logout()" class="btn btn-danger btn-block">Logout</a>
 </div>
