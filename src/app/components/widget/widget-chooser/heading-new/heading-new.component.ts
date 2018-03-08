@@ -12,7 +12,7 @@ import {StatusService} from '../../../../services/status.service.client';
 })
 export class HeadingNewComponent implements OnInit {
   user: User;
-  widget: Widget = new Widget('');
+  widget: Widget = new Widget('', '80%', 0, 1);
   websiteId: string;
   pageId: string;
   createError: string;
@@ -46,7 +46,6 @@ export class HeadingNewComponent implements OnInit {
       return;
     } else {
       this.widget.type = 'HEADING';
-      this.widget.rows = 0;
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', this.pageId, 'widget'])
       );

@@ -13,7 +13,7 @@ import {FlickrService} from '../../../services/flickr.service.client';
 })
 export class WidgetFlickrSearchComponent implements OnInit {
 user: User;
-  widget: Widget = new Widget('', 560);
+  widget: Widget = new Widget('', '700', 0, 1);
   websiteId: string;
   pageId: string;
   createError: string;
@@ -45,7 +45,6 @@ user: User;
     this.flickrService.searchPhotos(this.searchText).subscribe(
       res => {
         let data = res;
-        console.log(data);
         data = data.substring(14, data.length - 1);
         this.photos = JSON.parse(data).photos;
       }
@@ -57,7 +56,6 @@ user: User;
     this.widget.url = url;
     this.widget.name = 'flickr' + Math.random();
     this.widget.type = 'IMAGE';
-    this.widget.rows = 0;
     this.widgetService.createWidget(this.pageId, this.widget).subscribe(
       res => this.router.navigate(['/user', this.user._id, 'website', this.websiteId, 'page', this.pageId, 'widget'])
     );

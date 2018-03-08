@@ -12,7 +12,7 @@ import {User} from '../../../../models/user.client.model';
 })
 export class YoutubeNewComponent implements OnInit {
   user: User;
-  widget: Widget = new Widget('', 800);
+  widget: Widget = new Widget('', '100%', 0, 1);
   websiteId: string;
   pageId: string;
   createError: string;

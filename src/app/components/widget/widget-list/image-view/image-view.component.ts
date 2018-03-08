@@ -14,9 +14,6 @@ export class ImageViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.widget.width < 800) {
-      this.widget.width = 800;
-    }
   }
 
   getImageUrl() {

@@ -3,9 +3,10 @@ import {Page} from './page.client.model';
 export class Widget {
   constructor
   (public name: string,
-   public width?: number,
-   public formatted?: boolean,
+   public width?: string,
    public rows?: number,
+   public size?: number,
+   public formatted?: boolean,
    public type?: string,
    public _page?: Page,
    public text?: string,
@@ -13,7 +14,6 @@ export class Widget {
    public description?: string,
    public url?: string,
    public height?: string,
-   public size?: number,
    public widgetClass?: string,
    public icon?: string,
    public deletable?: boolean,

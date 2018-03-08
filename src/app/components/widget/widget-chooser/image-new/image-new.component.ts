@@ -14,7 +14,7 @@ export class ImageNewComponent implements OnInit {
   user: User;
   websiteId: string;
   pageId: string;
-  widget: Widget = new Widget('', 800);
+  widget: Widget = new Widget('', '700', 0, 1);
   createError: string;
 
   constructor(private statusService: StatusService,

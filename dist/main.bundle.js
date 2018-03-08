@@ -1158,7 +1158,7 @@ var HeadingNewComponent = /** @class */ (function () {
         this.widgetService = widgetService;
         this.router = router;
         this.statusService = statusService;
-        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('');
+        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('', '80%', 0, 1);
     }
     HeadingNewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1180,7 +1180,6 @@ var HeadingNewComponent = /** @class */ (function () {
         }
         else {
             this.widget.type = 'HEADING';
-            this.widget.rows = 0;
             this.widgetService.createWidget(this.pageId, this.widget).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website', _this.websiteId, 'page', _this.pageId, 'widget']); });
         }
     };
@@ -1258,7 +1257,7 @@ var ImageNewComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.widgetService = widgetService;
-        this.widget = new __WEBPACK_IMPORTED_MODULE_3__models_widget_client_model__["a" /* Widget */]('', 800);
+        this.widget = new __WEBPACK_IMPORTED_MODULE_3__models_widget_client_model__["a" /* Widget */]('', '700', 0, 1);
     }
     ImageNewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1419,7 +1418,7 @@ var YoutubeNewComponent = /** @class */ (function () {
         this.widgetService = widgetService;
         this.router = router;
         this.statusService = statusService;
-        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('', 800);
+        this.widget = new __WEBPACK_IMPORTED_MODULE_1__models_widget_client_model__["a" /* Widget */]('', '100%', 0, 1);
     }
     YoutubeNewComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1882,7 +1881,7 @@ var WidgetFlickrSearchComponent = /** @class */ (function () {
         this.statusService = statusService;
         this.flickrService = flickrService;
         this.widgetService = widgetService;
-        this.widget = new __WEBPACK_IMPORTED_MODULE_4__models_widget_client_model__["a" /* Widget */]('', 560);
+        this.widget = new __WEBPACK_IMPORTED_MODULE_4__models_widget_client_model__["a" /* Widget */]('', '700', 0, 1);
         this.photos = [];
     }
     WidgetFlickrSearchComponent.prototype.ngOnInit = function () {
@@ -1901,7 +1900,6 @@ var WidgetFlickrSearchComponent = /** @class */ (function () {
         var _this = this;
         this.flickrService.searchPhotos(this.searchText).subscribe(function (res) {
             var data = res;
-            console.log(data);
             data = data.substring(14, data.length - 1);
             _this.photos = JSON.parse(data).photos;
         });
@@ -1913,7 +1911,6 @@ var WidgetFlickrSearchComponent = /** @class */ (function () {
         this.widget.url = url;
         this.widget.name = 'flickr' + Math.random();
         this.widget.type = 'IMAGE';
-        this.widget.rows = 0;
         this.widgetService.createWidget(this.pageId, this.widget).subscribe(function (res) { return _this.router.navigate(['/user', _this.user._id, 'website', _this.websiteId, 'page', _this.pageId, 'widget']); });
     };
     WidgetFlickrSearchComponent = __decorate([
@@ -2054,9 +2051,6 @@ var ImageViewComponent = /** @class */ (function () {
         this.sanitizer = sanitizer;
     }
     ImageViewComponent.prototype.ngOnInit = function () {
-        if (this.widget.width < 800) {
-            this.widget.width = 800;
-        }
     };
     ImageViewComponent.prototype.getImageUrl = function () {
         return this.sanitizer.bypassSecurityTrustUrl(this.widget.url);
@@ -2312,11 +2306,12 @@ var Website = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Widget; });
 var Widget = /** @class */ (function () {
-    function Widget(name, width, formatted, rows, type, _page, text, placeholder, description, url, height, size, widgetClass, icon, deletable, dateCreated, _id) {
+    function Widget(name, width, rows, size, formatted, type, _page, text, placeholder, description, url, height, widgetClass, icon, deletable, dateCreated, _id) {
         this.name = name;
         this.width = width;
-        this.formatted = formatted;
         this.rows = rows;
+        this.size = size;
+        this.formatted = formatted;
         this.type = type;
         this._page = _page;
         this.text = text;
@@ -2324,7 +2319,6 @@ var Widget = /** @class */ (function () {
         this.description = description;
         this.url = url;
         this.height = height;
-        this.size = size;
         this.widgetClass = widgetClass;
         this.icon = icon;
         this.deletable = deletable;
