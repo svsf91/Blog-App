@@ -1,0 +1,107 @@
+Quiz 2
+Chenhui Deng
+
+
+
+CSS Framework: 
+Please use either Bootstrap 4 or W3.css to answer following questions.
+
+
+Example question: Create a small button
+Bootstrap 4 answer: <button type="button" class="btn btn-sm">Small</button>
+W3.CSS answer: <button class="w3-button w3-small">Small</button>
+
+
+Button:
+
+
+1. Create a black/dark button.
+<button type="button" class="btn btn-dark">Dark</button>
+
+
+2. Create a white button with red border
+<button type="button" class="btn btn-outline-danger">Danger</button>
+
+
+3. Create a disabled red button.
+<button type="button" class="btn btn-danger disabled">Disabled Danger button</button>
+
+
+Form:
+
+
+1. Create a form with an email input and a password input
+ <input placeholder="Email"
+         type="email"
+         id="email"
+         class="form-control"/>
+
+ <input placeholder="password"
+             type="password"
+             id="password"
+             class="form-control"/>
+
+
+2. Create an inline form with one text input
+<form class="form-inline">
+<input type="text" class="form-control"/>
+</form>
+
+3. Create a dropdown
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href=" ">Item 1</a >
+    <a class="dropdown-item" href="#">Item 2</a >
+    <a class="dropdown-item" href="#">Item 3</a >
+  </div>
+</div>
+
+
+Grid:
+
+
+1. Create three equal-width columns
+
+<div class="row">
+  <div class="col-md-4>
+  </div>
+  <div class="col-md-4>
+  </div>
+  <div class="col-md-4>
+  </div>
+</div>
+
+
+2. Create two columns of unequal width (25%/75%)
+
+<div class="row">
+  <div class="col-md-3>
+  </div>
+  <div class="col-md-9>
+  </div>
+</div>
+
+
+ANGULAR:
+1. Explain what is controller in MVC?
+Controller is a software code that controls the interactions between the Model and View.
+
+2. What directive is used to initialize an angular app?
+
+ng-init
+
+3. Can an HTML page have multiple “ng-app” directive for bootstrapping multiple AngularJS application?
+No
+
+4. What does the The ng-bind directive used for binding?
+Data from the model and View on the HTML controls
+
+5. What is $scope?
+The scope is the binding part between the HTML (view) and the JavaScript (controller).
+
+6. Which module is required for routing?
+ngRoute module (app.routing)
