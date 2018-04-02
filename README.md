@@ -5,10 +5,11 @@
 ## Preview
 Add photo from flickr:
 
-<img src="https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png" width="200">
+<img src="https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png" width="400">
 
 Embed youtube videos:
-https://github.com/svsf91/Blog-App/blob/master/images/Youtube.png
+
+<img src="https://github.com/svsf91/Blog-App/blob/master/images/Youtube.png" width="400">
 
 ## How to run
 ```clone https://github.com/svsf91/Blog-App.git```
