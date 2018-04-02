@@ -21,4 +21,5 @@ Embed youtube videos:
 ```sudo mongod```
 ### run server:
 ```node server.js```
-### open browser and type: ```localhost:3000```
+### open browser and type: 
+```localhost:3000```
