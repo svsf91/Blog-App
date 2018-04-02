@@ -4,7 +4,8 @@
 
 ## Preview
 Add photo from flickr:
-![](https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png =20X20)
+
+<img src="https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png" width="200">
 
 Embed youtube videos:
 https://github.com/svsf91/Blog-App/blob/master/images/Youtube.png
