@@ -3,6 +3,11 @@
 [Blog](https://serene-fortress-94809.herokuapp.com/)
 
 ## Preview
+Add photo from flickr:
+![](https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png)
+
+Embed youtube videos:
+https://github.com/svsf91/Blog-App/blob/master/images/Youtube.png
 
 ## How to run
 ```clone https://github.com/svsf91/Blog-App.git```
