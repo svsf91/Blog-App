@@ -11,7 +11,7 @@ app.get('/', function(req, res) {
 
 2. What does app.listen() do in express and what are the parameters it accepts
 It listen for connections on the given path.
-Parameters: port number, hostname, callback funtion
+Parameters: port number, hostname, callback function
 
 3. How do we start the express server?
 ```
@@ -68,9 +68,39 @@ http.createServer(function(req, res) {
 
 File System module, Process module
 1. Count the number of files in current directory
-
+```JavaScript
+var http = require('http');
+var fs = require('fs');
+http.createServer(function (req, res) {
+  fs.readdir('./', function(error, file) {
+      res.write(String(file.length));
+      res.end();
+  });
+}).listen(4000);
+```
 
 2. Read text file ‘data.txt’ in the current directory and display its contents
-
+```JavaScript
+var http = require('http');
+var fs = require('fs');
+http.createServer(function (req, res) {
+  fs.readFile('data.txt', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
+}).listen(4000);
+```
 
 3. Display the path of the current working directory
+```JavaScript
+var http = require('http');
+var fs = require('fs');
+http.createServer(function (req, res) {
+  fs.readFile('data.txt', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(process.cwd());
+    res.end();
+  });
+}).listen(4000);
+```
