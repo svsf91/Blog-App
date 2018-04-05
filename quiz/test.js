@@ -1,8 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 http.createServer(function (req, res) {
-  fs.readdir('./', function(error, file) {
-      res.write(String(file.length));
-      res.end();
-  });
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(process.cwd());
+    res.end();
 }).listen(4000);
