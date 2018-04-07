@@ -3,6 +3,13 @@
 [Blog](https://serene-fortress-94809.herokuapp.com/)
 
 ## Preview
+Add photo from flickr:
+
+<img src="https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png" width="550">
+
+Embed youtube videos:
+
+<img src="https://github.com/svsf91/Blog-App/blob/master/images/Youtube.png" width="550">
 
 ## How to run
 ```clone https://github.com/svsf91/Blog-App.git```
@@ -14,4 +21,5 @@
 ```sudo mongod```
 ### run server:
 ```node server.js```
-### open browser and type: ```localhost:3000```
+### open browser and type: 
+```localhost:3000```
