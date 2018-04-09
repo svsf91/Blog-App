@@ -1,36 +1,74 @@
-<div class="container-fluid">
-  <div *ngIf="errorFlag" class="alert alert-danger">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Login</a>
+    <ul id="nav-mobile" class="right">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div *ngIf="errorFlag" class="center-align red darken-2">
     {{errorMsg}}
   </div>
-  <h1>Login</h1>
-  <form (ngSubmit)="login()" #f="ngForm">
-    <input placeholder="username"
-           name="username"
-           type="text"
-           class="form-control"
-           [(ngModel)]="username" required #name="ngModel"/>
-    <span class="help-block"
-          *ngIf="name.invalid && name.touched">
-      Please enter username!
-    </span>
-    <input placeholder="password"
-           name="password"
-           type="password"
-           class="form-control"
-           [(ngModel)]="password" required #pass="ngModel"/>
-    <span class="help-block"
-          *ngIf="pass.invalid && pass.touched">
-      Please enter password!
-    </span>
-    <button type="submit"
-      class="btn btn-primary btn-block"
-      [disabled]="f.invalid">
-      Login
-    </button>
-    <a href="/auth/facebook" class="btn btn-primary btn-block">
-      Facebook
-    </a>
-    <button routerLink="/register"
-      class="btn btn-success btn-block">Register</button>
-  </form>
+
+  <div class="row">
+    <form class="col s12" (ngSubmit)="login()" #f="ngForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="username"
+                 type="text"
+                 class="validate"
+                 id="username"
+                 [(ngModel)]="username" required #name="ngModel"/>
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="password"
+                 id="password"
+                 type="password"
+                 class="validate"
+                 [(ngModel)]="password" required #pass="ngModel"/>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row center">
+        <button type="submit"
+                class="btn waves-effect btn-large blue darken-2"
+                [disabled]="f.invalid">
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+        <a href="/auth/facebook"
+           class="btn waves-effect btn-large lime darken-1">
+          Facebook
+          <i class="material-icons right">cloud</i>
+        </a>
+        <button routerLink="/register"
+                class="btn waves-effect btn-large">
+          Register
+          <i class="material-icons right">add</i>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+
+
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

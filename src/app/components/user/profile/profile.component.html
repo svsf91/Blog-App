@@ -1,42 +1,78 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-left navbar-brand pull-left" routerLink="/login">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <div class="navbar-header navbar-brand">
-      Profile
-    </div>
-    <a class="navbar-right navbar-brand pull-right" (click)="updateUser()">
-      <span class="glyphicon glyphicon-ok"></span>
-    </a>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Profile</a>
+    <ul class="left">
+      <li><a routerLink="/login">
+        Back
+        <i class="material-icons left">chevron_left</i>
+      </a></li>
+    </ul>
+    <ul id="nav-mobile" class="right">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="container-fluid myBody">
-  <div *ngIf="message" class="alert alert-info">
+<div class="container">
+  <div *ngIf="message" class="center-align blue">
     {{message}}
   </div>
-  <label>Username</label>
-  <input [(ngModel)]="user.username" class="form-control" type="text"
-         id="username" placeholder="{{user.username}}">
-  <label>Email</label>
-  <input [(ngModel)]="user.email" class="form-control" type="text"
-         id="email" placeholder="{{user.email}}">
-  <label>Fisrt Name</label>
-  <input [(ngModel)]="user.firstName" class="form-control" type="text"
-         id="first-name" placeholder="{{user.firstName}}">
-  <label>Last Name</label>
-  <input [(ngModel)]="user.lastName" class="form-control" type="text"
-         id="last-name" placeholder="{{user.lastName}}">
-  <a [routerLink]="['/user', user._id, 'website']" class="btn btn-primary btn-block">Website</a>
-  <a (click)="removeUser()" class="btn btn-warning btn-block">Delete User</a>
-  <a (click)="logout()" class="btn btn-danger btn-block">Logout</a>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" routerLink="./">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+  <div class="row">
+    <form class="col s12">
+      <div class="right-align">
+        <a class="btn-floating btn-large waves-effect waves-light green lighten-1"
+           (click)="updateUser()">
+          <i class="material-icons">check</i></a>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Username</label>
+          <input [(ngModel)]="user.username" class="form-control" type="text" name="username"
+                 id="username" placeholder="{{user.username}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Email</label>
+          <input [(ngModel)]="user.email" class="form-control" type="text" name="email"
+                 id="email" placeholder="{{user.email}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Fisrt Name</label>
+          <input [(ngModel)]="user.firstName" class="form-control" type="text" name="firstName"
+                 id="first-name" placeholder="{{user.firstName}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Last Name</label>
+          <input [(ngModel)]="user.lastName" class="form-control" type="text" name="lastName"
+                 id="last-name" placeholder="{{user.lastName}}">
+        </div>
+      </div>
+      <div class="row center">
+        <a [routerLink]="['/user', user._id, 'website']" class="btn waves-effect btn-large blue darken-2">Website</a>
+        <a (click)="removeUser()" class="btn waves-effect btn-large red darken-1">Delete User</a>
+        <a (click)="logout()" class="btn waves-effect btn-large lime darken-1">Logout</a>
+      </div>
+    </form>
   </div>
-</nav>
+</div>
 
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

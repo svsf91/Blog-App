@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from '../../../services/page.service.client';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Page} from '../../../models/page.client.model';
-import {StatusService} from '../../../services/status.service.client';
-import {User} from '../../../models/user.client.model';
+import { PageService } from '../../../services/page.service.client';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Page } from '../../../models/page.client.model';
+import { StatusService } from '../../../services/status.service.client';
+import { User } from '../../../models/user.client.model';
 
 @Component({
   selector: 'app-page-edit',
@@ -18,9 +18,9 @@ export class PageEditComponent implements OnInit {
   page: Page;
   message: string;
   constructor(private activatedRoute: ActivatedRoute,
-              private pageService: PageService,
-              private router: Router,
-              private statusService: StatusService) { }
+    private pageService: PageService,
+    private router: Router,
+    private statusService: StatusService) { }
 
   ngOnInit() {
     this.statusService.checkLoggedIn().subscribe(
@@ -50,7 +50,7 @@ export class PageEditComponent implements OnInit {
         this.message = 'Page changes saved!';
         this.ngOnInit();
       },
-    err => this.message = 'Page changes failed!'
+      err => this.message = 'Page changes failed!'
     );
   }
   removePage() {

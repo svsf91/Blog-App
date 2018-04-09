@@ -22,11 +22,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.activatedRoute.params.subscribe(
-    //   (params: any) => {
-    //     this.userId = params['userId'];
-    //   }
-    // );
     this.statusService.checkLoggedIn().subscribe(
       response => {
         this.user = response;

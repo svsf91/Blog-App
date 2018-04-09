@@ -1,39 +1,79 @@
-<div class="container-fluid">
-  <div *ngIf="errorFlag" class="alert alert-danger">
-    {{errorMsg}}
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Register</a>
+    <ul id="nav-mobile" class="right">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
   </div>
-  <h1>Register</h1>
-  <form (ngSubmit)="register()" #f="ngForm">
-    <input placeholder="username"
-           name="username"
-           type="text"
-           class="form-control"
-           [(ngModel)]="username" required #name="ngModel"/>
-    <span class="help-block" *ngIf="name.touched && name.invalid">
-      Please enter username!
-    </span>
-    <input placeholder="password"
-           name="password"
-           type="password"
-           class="form-control"
-           [(ngModel)]="password" required #pass="ngModel"/>
-    <span class="help-block" *ngIf="pass.touched && pass.invalid">
-      Please enter password!
-    </span>
-    <input placeholder="verify password"
-           name="verify"
-           type="password"
-           class="form-control"
-           [(ngModel)]="verify" required #veri="ngModel">
-    <span class="help-block" *ngIf="veri.touched && veri.invalid">
-    </span>
-    <button type="submit"
-            class="btn btn-primary btn-block"
-            [disabled]="f.invalid">
-      Register
-    </button>
-    <button routerLink="/login" class="btn btn-danger btn-block">
-      Cancel
-    </button>
-  </form>
+</nav>
+
+<div class="container">
+
+  <div class="row">
+    <div *ngIf="errorFlag" class="center-align red darken-2">
+      {{errorMsg}}
+    </div>
+
+    <form class="col s12" (ngSubmit)="register()" #f="ngForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="username"
+                 id="username"
+                 type="text"
+                 class="validate"
+                 [(ngModel)]="username" required #name="ngModel"/>
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="password"
+                 id="password"
+                 type="password"
+                 class="validate"
+                 [(ngModel)]="password" required #pass="ngModel"/>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="verify"
+                 id="verify"
+                 type="password"
+                 class="validate"
+                 [(ngModel)]="verify" required #veri="ngModel">
+          <label for="verify">Verify Password</label>
+        </div>
+      </div>
+      <div class="row center">
+        <button type="submit"
+                class="btn waves-effect btn-large blue darken-2"
+                [disabled]="f.invalid">
+          Register
+          <i class="material-icons right">send</i>
+        </button>
+        <button routerLink="/login" class="btn waves-effect btn-large red darken-1">
+          Cancel
+          <i class="material-icons right">cancel</i>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+
+
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
