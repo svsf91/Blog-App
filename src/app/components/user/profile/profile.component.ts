@@ -11,7 +11,7 @@ import {User} from '../../../models/user.client.model';
 })
 export class ProfileComponent implements OnInit {
   userId: string;
-  user: User = new User('hugh', '', '', 'hugh', 'Deng', 'hugh@gmail.com');
+  user: User;
   username: string;
   message: string;
 

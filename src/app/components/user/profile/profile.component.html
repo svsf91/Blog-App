@@ -18,7 +18,7 @@
   <div *ngIf="message" class="center-align blue">
     {{message}}
   </div>
-  <div class="row">
+  <div *ngIf="user" class="row">
     <form class="col s12">
       <div class="right-align">
         <a class="btn-floating btn-large waves-effect waves-light green lighten-1"
@@ -26,29 +26,29 @@
           <i class="material-icons">check</i></a>
       </div>
       <div class="row">
+        <label>Username</label>
         <div class="input-field col s12">
-          <label>Username</label>
           <input [(ngModel)]="user.username" class="form-control" type="text" name="username"
                  id="username" placeholder="{{user.username}}">
         </div>
       </div>
       <div class="row">
+        <label>Email</label>
         <div class="input-field col s12">
-          <label>Email</label>
           <input [(ngModel)]="user.email" class="form-control" type="text" name="email"
                  id="email" placeholder="{{user.email}}">
         </div>
       </div>
       <div class="row">
+        <label>Fisrt Name</label>
         <div class="input-field col s12">
-          <label>Fisrt Name</label>
           <input [(ngModel)]="user.firstName" class="form-control" type="text" name="firstName"
                  id="first-name" placeholder="{{user.firstName}}">
         </div>
       </div>
       <div class="row">
+        <label>Last Name</label>
         <div class="input-field col s12">
-          <label>Last Name</label>
           <input [(ngModel)]="user.lastName" class="form-control" type="text" name="lastName"
                  id="last-name" placeholder="{{user.lastName}}">
         </div>
