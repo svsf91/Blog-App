@@ -1,6 +1,6 @@
 # A Blog Website 
 ## Deploy address 
-[Blog](https://serene-fortress-94809.herokuapp.com/)
+[Aggregation-Blog](https://blog-aggregation.herokuapp.com/)
 
 ## Preview
 Add photo from flickr:
