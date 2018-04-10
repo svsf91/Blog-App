@@ -1,3 +1,9 @@
-<div class="container-fluid">
-  <img [src]="getImageUrl()" [width]="widget.width">
+<div class="card">
+  <div class="card-image">
+    <img [src]="getImageUrl()" [width]="widget.width">
+    <span class="card-title">{{widget.name}}</span>
+  </div>
+  <div class="card-content">
+    <p>{{widget.description}}</p>
+  </div>
 </div>

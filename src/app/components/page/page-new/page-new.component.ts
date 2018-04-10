@@ -15,7 +15,6 @@ export class PageNewComponent implements OnInit {
   pages: Page[];
   page: Page = new Page('');
   websiteId: string;
-  name: string;
   description: string;
   constructor(private activatedRoute: ActivatedRoute,
               private pageService: PageService,

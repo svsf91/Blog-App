@@ -1,39 +1,58 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-left navbar-brand pull-left" [routerLink]="['../']">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <div class="navbar-header navbar-brand">
-      Widgets
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Widget List</a>
+      <ul class="left">
+        <li><a routerLink="../../">
+          Back
+          <i class="material-icons left">chevron_left</i>
+        </a></li>
+      </ul>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="./new">
+          <i class="material-icons right">add</i>
+        </a></li>
+      </ul>
     </div>
-    <a class="navbar-right navbar-brand pull-right" [routerLink]="['./', 'new']">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
-  </div>
-</nav>
-<div *ngIf="widgets" class="myBody">
-  <div *ngFor="let wid of widgets" class="list-group-item">
-    <a [routerLink]="['./', wid._id]">
-      <span class="glyphicon glyphicon-cog pull-right"></span>
-    </a>
-    <div [ngSwitch]="wid.type">
-      <div *ngSwitchCase="'HEADING'">
-        <app-heading-view [widget]="wid"></app-heading-view>
-      </div>
-      <div *ngSwitchCase="'YOUTUBE'">
-        <app-youtube-view [widget]="wid"></app-youtube-view>
-      </div>
-      <div *ngSwitchCase="'IMAGE'">
-        <app-image-view [widget]="wid"></app-image-view>
-      </div>
-    </div>
-  </div>
-</div>
+  </nav>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div *ngIf="user" class="container-fluid">
-    <a class="navbar-right navbar-brand pull-right" [routerLink]="['/user', userId]">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+
+  <div *ngIf="widgets">
+    <div *ngFor="let wid of widgets" class="row">
+      <div class="col s8 offset-s2">
+        <div [ngSwitch]="wid.type">
+          <div *ngSwitchCase="'HEADING'">
+            <app-heading-view [widget]="wid"></app-heading-view>
+          </div>
+          <div *ngSwitchCase="'YOUTUBE'">
+            <app-youtube-view [widget]="wid"></app-youtube-view>
+          </div>
+          <div *ngSwitchCase="'IMAGE'">
+            <app-image-view [widget]="wid"></app-image-view>
+          </div>
+        </div>
+      </div>
+      <div class="col s2"></div>
+      <a class="btn-floating btn-large waves-effect waves-light blue lighten-1"
+         [routerLink]="['./', wid._id]">
+        <i class="material-icons">settings</i></a>
+    </div>
   </div>
-</nav>
+</main>
+
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>

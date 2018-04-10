@@ -1,36 +1,56 @@
-<nav class="navbar narbar-default navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <a routerLink="../" class="navbar-link navbar-text pull-left cl-navbar-text cl-text-white">
-      <span class="glyphicon glyphicon-chevron-left "></span>
-    </a>
-    <a class="navbar-brand cl-navbar-text cl-text-white">
-      Search Flickr
-    </a>
-  </div>
-</nav>
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Widget List</a>
+      <ul class="left">
+        <li><a routerLink="../../">
+          Back
+          <i class="material-icons left">chevron_left</i>
+        </a></li>
+      </ul>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="./new">
+          <i class="material-icons right">add</i>
+        </a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="container-fluid myBody">
-  <div class="input-group">
-    <input [(ngModel)]="searchText" type="text" class="form-control">
-    <span class="input-group-btn">
-            <a (click)="searchPhotos()" class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-            </a>
-        </span>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="input-field col s6 offset-s3">
+        <input [(ngModel)]="searchText" name="search" id="search" type="text" class="form-control">
+        <label for="search">Keyword</label>
+      </div>
+      <div class="col s1">
+        <a (click)="searchPhotos()" class="btn-floating btn-large waves-effect waves-light blue lighten-1">
+          <i class="material-icons">search</i>
+        </a>
+      </div>
+    </div>
 
-  <div *ngIf="photos" class="row">
-    <div class="col-xs-4" *ngFor="let photo of photos.photo">
-      <img (click)="selectPhoto(photo)"
-           [src]="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id+ '_' + photo.secret + '_m.jpg'"/>
+    <div *ngIf="photos" class="row">
+      <div class="col s4" *ngFor="let photo of photos.photo">
+        <img (click)="selectPhoto(photo)"
+             [src]="'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id+ '_' + photo.secret + '_m.jpg'"/>
+      </div>
     </div>
   </div>
-</div>
+</main>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div *ngIf="user" class="container-fuild">
-    <a [routerLink]="['/user', user._id]" class="navbar-link navbar-text pull-right cl-navbar-text cl-icon-padding cl-text-white">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
   </div>
-</nav>
+</footer>
+</body>

@@ -1,34 +1,60 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-left navbar-brand pull-left" routerLink="../">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <div class="navbar-header navbar-brand">
-      Page list
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Page List</a>
+      <ul class="left">
+        <li><a routerLink="../../">
+          Back
+          <i class="material-icons left">chevron_left</i>
+        </a></li>
+      </ul>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="./new">
+          <i class="material-icons right">add</i>
+        </a></li>
+      </ul>
     </div>
-    <a class="navbar-right navbar-brand pull-right" routerLink="./new">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
+  </nav>
+
+  <div *ngIf="pages" class="container">
+    <div *ngFor="let pa of pages">
+      <div class="row">
+        <div class="col s12">
+          <div class="card z-depth-3">
+            <a class="card-content">
+              <span class="card-title">{{pa.name}}</span>
+              <p>{{pa.description}}</p>
+            </a>
+            <div class="card-action">
+              <a [routerLink]="['./', pa._id, 'widget']">
+                Details
+                <i class="material-icons small">send</i>
+              </a>
+              <a [routerLink]="['./', pa._id]">
+                Settings
+                <i class="material-icons small">settings</i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</nav>
-<div *ngIf="pages" class="container-fluid myBody">
-  <div *ngFor="let pa of pages">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <a [routerLink]="['./', pa._id, 'widget']">
-          {{pa.name}}
-        </a>
-        <a [routerLink]="['./', pa._id]">
-          <span class="glyphicon glyphicon-cog pull-right"></span>
-        </a>
-      </li>
-    </ul>
+</main>
+
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
+      </ul>
+    </div>
   </div>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <a *ngIf="user" class="navbar-right navbar-brand pull-right" [routerLink]="['/user', user._id]">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
-  </div>
-</nav>
+</footer>
+</body>

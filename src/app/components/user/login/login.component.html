@@ -1,64 +1,66 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">Login</a>
-    <ul id="nav-mobile" class="right">
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
-    </ul>
-  </div>
-</nav>
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Login</a>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="container">
-  <div *ngIf="errorFlag" class="center-align red darken-2">
-    {{errorMsg}}
-  </div>
+  <div class="container">
+    <div *ngIf="errorFlag" class="center-align red darken-2">
+      {{errorMsg}}
+    </div>
 
-  <div class="row">
-    <form class="col s12" (ngSubmit)="login()" #f="ngForm">
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="username"
-                 type="text"
-                 class="validate"
-                 id="username"
-                 [(ngModel)]="username" required #name="ngModel"/>
-          <label for="username">Username</label>
+    <div class="row">
+      <form class="col s12" (ngSubmit)="login()" #f="ngForm">
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="username"
+                   type="text"
+                   class="validate"
+                   id="username"
+                   [(ngModel)]="username" required #name="ngModel"/>
+            <label for="username">Username</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="password"
-                 id="password"
-                 type="password"
-                 class="validate"
-                 [(ngModel)]="password" required #pass="ngModel"/>
-          <label for="password">Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="password"
+                   id="password"
+                   type="password"
+                   class="validate"
+                   [(ngModel)]="password" required #pass="ngModel"/>
+            <label for="password">Password</label>
+          </div>
         </div>
-      </div>
-      <div class="row center">
-        <button type="submit"
-                class="btn waves-effect btn-large blue darken-2"
-                [disabled]="f.invalid">
-          Submit
-          <i class="material-icons right">send</i>
-        </button>
-        <a href="/auth/facebook"
-           class="btn waves-effect btn-large lime darken-1">
-          Facebook
-          <i class="material-icons right">cloud</i>
-        </a>
-        <button routerLink="/register"
-                class="btn waves-effect btn-large">
-          Register
-          <i class="material-icons right">add</i>
-        </button>
-      </div>
-    </form>
+        <div class="row center">
+          <button type="submit"
+                  class="btn waves-effect btn-large blue darken-2"
+                  [disabled]="f.invalid">
+            Submit
+            <i class="material-icons right">send</i>
+          </button>
+          <a href="/auth/facebook"
+             class="btn waves-effect btn-large lime darken-1">
+            Facebook
+            <i class="material-icons right">cloud</i>
+          </a>
+          <button routerLink="/register"
+                  class="btn waves-effect btn-large">
+            Register
+            <i class="material-icons right">add</i>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</main>
 
-
-<footer class="page-footer">
+<footer class="page-footer footer">
   <div class="row">
     <div class="col l6 s12">
       <h5 class="white-text">Blog</h5>
@@ -72,3 +74,5 @@
     </div>
   </div>
 </footer>
+</body>
+

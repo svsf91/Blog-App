@@ -44,6 +44,7 @@ export class WebsiteEditComponent implements OnInit {
       res => {
         this.message = 'Website changes saved';
         this.ngOnInit();
+        this.router.navigate(['/user', this.user._id, 'website']);
       },
       err => this.message = 'Website changes failed'
     );

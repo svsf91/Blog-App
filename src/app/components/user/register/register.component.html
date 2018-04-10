@@ -1,66 +1,69 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">Register</a>
-    <ul id="nav-mobile" class="right">
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-
-  <div class="row">
-    <div *ngIf="errorFlag" class="center-align red darken-2">
-      {{errorMsg}}
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Register</a>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <form class="col s12" (ngSubmit)="register()" #f="ngForm">
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="username"
-                 id="username"
-                 type="text"
-                 class="validate"
-                 [(ngModel)]="username" required #name="ngModel"/>
-          <label for="username">Username</label>
+  <div class="container">
+
+    <div class="row">
+      <div *ngIf="errorFlag" class="center-align red darken-2">
+        {{errorMsg}}
+      </div>
+
+      <form class="col s12" (ngSubmit)="register()" #f="ngForm">
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="username"
+                   id="username"
+                   type="text"
+                   class="validate"
+                   [(ngModel)]="username" required #name="ngModel"/>
+            <label for="username">Username</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="password"
-                 id="password"
-                 type="password"
-                 class="validate"
-                 [(ngModel)]="password" required #pass="ngModel"/>
-          <label for="password">Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="password"
+                   id="password"
+                   type="password"
+                   class="validate"
+                   [(ngModel)]="password" required #pass="ngModel"/>
+            <label for="password">Password</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="verify"
-                 id="verify"
-                 type="password"
-                 class="validate"
-                 [(ngModel)]="verify" required #veri="ngModel">
-          <label for="verify">Verify Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input name="verify"
+                   id="verify"
+                   type="password"
+                   class="validate"
+                   [(ngModel)]="verify" required #veri="ngModel">
+            <label for="verify">Verify Password</label>
+          </div>
         </div>
-      </div>
-      <div class="row center">
-        <button type="submit"
-                class="btn waves-effect btn-large blue darken-2"
-                [disabled]="f.invalid">
-          Register
-          <i class="material-icons right">send</i>
-        </button>
-        <button routerLink="/login" class="btn waves-effect btn-large red darken-1">
-          Cancel
-          <i class="material-icons right">cancel</i>
-        </button>
-      </div>
-    </form>
+        <div class="row center">
+          <button type="submit"
+                  class="btn waves-effect btn-large blue darken-2"
+                  [disabled]="f.invalid">
+            Register
+            <i class="material-icons right">send</i>
+          </button>
+          <button routerLink="/login" class="btn waves-effect btn-large red darken-1">
+            Cancel
+            <i class="material-icons right">cancel</i>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</main>
 
 
 <footer class="page-footer">
@@ -77,3 +80,5 @@
     </div>
   </div>
 </footer>
+</body>
+

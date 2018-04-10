@@ -1,62 +1,66 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-
-  <div class="container-fluid">
-    <div class="col-sm-4 hidden-xs">
-      <a class="navbar-left navbar-brand pull-left" routerLink="../">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <div class="navbar-header navbar-brand">
-        Pages
-      </div>
-      <a class="navbar-right navbar-brand pull-right" routerLink="../new">
-        <span class="glyphicon glyphicon-plus pull-right"></span>
-      </a>
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Edit Website</a>
+      <ul class="left">
+        <li><a routerLink="../">
+          Back
+          <i class="material-icons left">chevron_left</i>
+        </a></li>
+      </ul>
     </div>
-    <div class="col-xs-12 col-sm-8">
-      <div class="navbar-header navbar-brand">
-        Edit Website
+  </nav>
+
+  <div *ngIf="pages && page">
+    <div class="row">
+      <div class="col l4 s12">
+        <div *ngFor="let pa of pages">
+          <ul class="collection">
+            <li class="collection-item">
+              <a [routerLink]="['../', pa._id, 'widget']">
+                {{pa.name}}
+              </a>
+              <a class="secondary-content" (click)="editPage(pa._id)">
+                <i class="material-icons right">settings</i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <a class="navbar-right navbar-brand pull-right" (click)="updatePage()">
-        <span class="glyphicon glyphicon-ok pull-right"></span>
-      </a>
+      <div class="col l6 s12 offset-l1">
+        <div class="right-align">
+          <a class="btn-floating btn-large waves-effect waves-light green lighten-1"
+             (click)="updatePage()">
+            <i class="material-icons">check</i></a>
+        </div>
+        <div class="col input-field s12">
+          <input [(ngModel)]="page.name" class="validate" type="text" name="name" id="name"
+                 placeholder="Name">
+        </div>
+        <div class="col input-field s12">
+          <textarea [(ngModel)]="page.description" type="text" name="description" id="description"
+                    placeholder="Description">
+          </textarea>
+        </div>
+        <a (click)="removePage()" class="btn waves-effect btn-large red-darken-1">Remove</a>
+      </div>
     </div>
   </div>
-</nav>
-<div *ngIf="pages && page" class="container-fluid myBody">
-  <div class="col-sm-4 hidden-xs">
-    <div *ngFor="let pa of pages">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a [routerLink]="['../', pa._id, 'widget']">
-            {{pa.name}}
-          </a>
-          <a (click)="editPage(pa._id)">
-            <span class="glyphicon glyphicon-cog pull-right"></span>
-          </a>
-        </li>
+</main>
+
+<footer class="page-footer">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Blog</h5>
+      <p class="grey-text text-lighten-4">Share your media from anywhere!</p>
+    </div>
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="https://github.com/svsf91">Github</a></li>
       </ul>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-8">
-    <div *ngIf="message" class="alert alert-info">
-      {{message}}
-    </div>
-    <form>
-      <label>Name</label>
-      <input [(ngModel)]="page.name" class="form-control"
-             type="text" name="name" placeholder="{{page.name}}">
-      <label>Description</label>
-      <textarea [(ngModel)]="page.description" class="form-control"
-                type="text" name="description" placeholder="{{page.description}}"></textarea>
-      <button (click)="removePage()" class="btn btn-danger btn-block">Delete</button>
-    </form>
-  </div>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <a *ngIf="user" class="navbar-right navbar-brand pull-right"
-       [routerLink]="['/user', user._id]">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
-  </div>
-</nav>
+</footer>
+</body>

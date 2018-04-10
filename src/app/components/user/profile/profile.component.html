@@ -1,66 +1,69 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">Profile</a>
-    <ul class="left">
-      <li><a routerLink="/login">
-        Back
-        <i class="material-icons left">chevron_left</i>
-      </a></li>
-    </ul>
-    <ul id="nav-mobile" class="right">
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
-    </ul>
-  </div>
-</nav>
+<body>
+<main>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Profile</a>
+      <ul class="left">
+        <li><a routerLink="/login">
+          Back
+          <i class="material-icons left">chevron_left</i>
+        </a></li>
+      </ul>
+      <ul id="nav-mobile" class="right">
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="container">
-  <div *ngIf="message" class="center-align blue">
-    {{message}}
+  <div class="container">
+    <div *ngIf="message" class="center-align blue">
+      {{message}}
+    </div>
+    <div *ngIf="user" class="row">
+      <form class="col s12">
+        <div class="right-align">
+          <a class="btn-floating btn-large waves-effect waves-light green lighten-1"
+             (click)="updateUser()">
+            <i class="material-icons">check</i></a>
+        </div>
+        <div class="row">
+          <label>Username</label>
+          <div class="input-field col s12">
+            <input [(ngModel)]="user.username" class="form-control" type="text" name="username"
+                   id="username" placeholder="{{user.username}}">
+          </div>
+        </div>
+        <div class="row">
+          <label>Email</label>
+          <div class="input-field col s12">
+            <input [(ngModel)]="user.email" class="form-control" type="text" name="email"
+                   id="email" placeholder="{{user.email}}">
+          </div>
+        </div>
+        <div class="row">
+          <label>Fisrt Name</label>
+          <div class="input-field col s12">
+            <input [(ngModel)]="user.firstName" class="form-control" type="text" name="firstName"
+                   id="first-name" placeholder="{{user.firstName}}">
+          </div>
+        </div>
+        <div class="row">
+          <label>Last Name</label>
+          <div class="input-field col s12">
+            <input [(ngModel)]="user.lastName" class="form-control" type="text" name="lastName"
+                   id="last-name" placeholder="{{user.lastName}}">
+          </div>
+        </div>
+        <div class="row center">
+          <a [routerLink]="['/user', user._id, 'website']" class="btn waves-effect btn-large blue darken-2">Website</a>
+          <a (click)="removeUser()" class="btn waves-effect btn-large red darken-1">Delete User</a>
+          <a (click)="logout()" class="btn waves-effect btn-large lime darken-1">Logout</a>
+        </div>
+      </form>
+    </div>
   </div>
-  <div *ngIf="user" class="row">
-    <form class="col s12">
-      <div class="right-align">
-        <a class="btn-floating btn-large waves-effect waves-light green lighten-1"
-           (click)="updateUser()">
-          <i class="material-icons">check</i></a>
-      </div>
-      <div class="row">
-        <label>Username</label>
-        <div class="input-field col s12">
-          <input [(ngModel)]="user.username" class="form-control" type="text" name="username"
-                 id="username" placeholder="{{user.username}}">
-        </div>
-      </div>
-      <div class="row">
-        <label>Email</label>
-        <div class="input-field col s12">
-          <input [(ngModel)]="user.email" class="form-control" type="text" name="email"
-                 id="email" placeholder="{{user.email}}">
-        </div>
-      </div>
-      <div class="row">
-        <label>Fisrt Name</label>
-        <div class="input-field col s12">
-          <input [(ngModel)]="user.firstName" class="form-control" type="text" name="firstName"
-                 id="first-name" placeholder="{{user.firstName}}">
-        </div>
-      </div>
-      <div class="row">
-        <label>Last Name</label>
-        <div class="input-field col s12">
-          <input [(ngModel)]="user.lastName" class="form-control" type="text" name="lastName"
-                 id="last-name" placeholder="{{user.lastName}}">
-        </div>
-      </div>
-      <div class="row center">
-        <a [routerLink]="['/user', user._id, 'website']" class="btn waves-effect btn-large blue darken-2">Website</a>
-        <a (click)="removeUser()" class="btn waves-effect btn-large red darken-1">Delete User</a>
-        <a (click)="logout()" class="btn waves-effect btn-large lime darken-1">Logout</a>
-      </div>
-    </form>
-  </div>
-</div>
+</main>
 
 <footer class="page-footer">
   <div class="row">
@@ -76,3 +79,4 @@
     </div>
   </div>
 </footer>
+</body>
