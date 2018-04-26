@@ -3,6 +3,8 @@
 [Aggregation-Blog](https://blog-aggregation.herokuapp.com/)
 
 ## Preview
+### you can login with 'alice', 'alice' to have a quick tour!
+
 Add photo from flickr:
 
 <img src="https://github.com/svsf91/Blog-App/blob/master/images/Search%20Flickr.png" width="550">
